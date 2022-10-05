@@ -1,0 +1,17 @@
+.nav {
+    grid-area: n;
+    background-color: #96a5de;
+    padding: 20px;
+}
+.item a{
+    color: white;
+    text-decoration: none;
+}
+.item a.active {
+    color: lightpink;
+}
+.item a.honor {
+    color: lightpink;
+    border-bottom: .07em solid;
+    text-decoration: underline;
+}
