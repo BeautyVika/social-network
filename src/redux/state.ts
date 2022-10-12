@@ -1,5 +1,9 @@
-import React from 'react';
-
+let renderTree = () => {
+    console.log('state is changed')
+}
+export const subscribe = (observer: () => void) => {
+    renderTree = observer
+}
 export type MessageType= {
     id: number
     message: string
@@ -15,6 +19,7 @@ export type PostType ={
 }
 export type ProfilePageType ={
     posts: PostType[]
+    messageForNewPost: string
 }
 export type DialogPageType = {
     dialogs: DialogType[]
@@ -28,12 +33,13 @@ export type RootStateType= {
     sidebar?: SidebarType
 }
 
-let state: RootStateType = {
+export let state: RootStateType = {
     profilePage: {
         posts: [
             {id: 1, message: 'Hi, how are you?', likesCount: 12},
             {id: 2, message: 'It\'s my first post', likesCount: 15}
-        ]
+        ],
+        messageForNewPost: ''
     },
     dialogPage: {
         dialogs: [
@@ -55,4 +61,18 @@ let state: RootStateType = {
     },
         sidebar: {}
 }
+export const addPost = (postMessage: string) => {
+    const newPost: PostType = {
+        id: 5,
+        message: postMessage,
+        likesCount: 0
+    }
+    state.profilePage.posts.push(newPost)
+    renderTree()
+}
+export const changeNewText = (newText: string) => {
+    state.profilePage.messageForNewPost = newText
+    renderTree()
+}
+
 export default state
