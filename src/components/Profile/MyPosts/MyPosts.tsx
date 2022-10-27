@@ -1,12 +1,13 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/MyPost'
-import {addPostAC, changeNewTextAC, PostType} from "../../../redux/ProfileReducer";
+import {PostType} from "../../../redux/ProfileReducer";
 
 type MyPostsType ={
+    addPost: (message: string) => void
+    updateNewPostText: (text: string) => void
     message: string
     posts: PostType[]
-    dispatch: (action: any) => void
 }
 
 const MyPosts = (props: MyPostsType) => {
@@ -14,11 +15,12 @@ const MyPosts = (props: MyPostsType) => {
     let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     let addPost = () => {
-        props.dispatch(addPostAC(props.message))
-        props.dispatch(changeNewTextAC(''))
+        props.addPost(props.message)
+
     }
     let changeNewTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(changeNewTextAC(e.currentTarget.value))
+        props.updateNewPostText(e.currentTarget.value)
+
     }
 
     return (

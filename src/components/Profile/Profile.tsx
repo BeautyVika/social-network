@@ -1,10 +1,10 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ProfileReducerType} from "../../redux/ProfileReducer";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {RootStateType} from "../../redux/reduxStore";
 
 type ProfileType= {
-    profilePage: ProfileReducerType
+    state: RootStateType
     dispatch: (action: any) => void
 }
 
@@ -13,8 +13,7 @@ const Profile = (props: ProfileType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.profilePage.posts}
-                     message={props.profilePage.messageForNewPost}
+            <MyPostsContainer state={props.state}
                      dispatch={props.dispatch}/>
         </div>
     )
