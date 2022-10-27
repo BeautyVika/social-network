@@ -5,10 +5,9 @@ import Message from './Message/Message'
 import {
     ActionsTypes,
     DialogType,
-    MessageType,
-    sendMessageAC,
-    updateNewMessageBodyAC
-} from "../../redux/state";
+    MessageType
+} from "../../redux/store";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/DialogsReducer";
 
 type DialogsPropsType = {
     dialogs: DialogType[]
