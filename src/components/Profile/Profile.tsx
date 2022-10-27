@@ -1,12 +1,11 @@
 import React from 'react';
 import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ActionsTypes, PostType} from "../../redux/store";
+import {ProfileReducerType} from "../../redux/ProfileReducer";
 
 type ProfileType= {
-    message: string
-    posts: PostType[]
-    dispatch: (action: ActionsTypes) => void
+    profilePage: ProfileReducerType
+    dispatch: (action: any) => void
 }
 
 const Profile = (props: ProfileType) => {
@@ -14,8 +13,8 @@ const Profile = (props: ProfileType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.posts}
-                     message={props.message}
+            <MyPosts posts={props.profilePage.posts}
+                     message={props.profilePage.messageForNewPost}
                      dispatch={props.dispatch}/>
         </div>
     )

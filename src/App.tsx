@@ -8,21 +8,20 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
-import { StoreType} from "./redux/store";
+import {RootStateType} from "./redux/reduxStore";
 
 
 type AppType = {
-    store: StoreType
+    state: RootStateType
+    dispatch: (action: any) => void
 }
 
 const App = (props: AppType) => {
-    const state = props.store.getState()
 
-    let dialogs =state.dialogPage.dialogs
-    let messages =state.dialogPage.messages
-    let posts = state.profilePage.posts
-    let message = state.profilePage.messageForNewPost
-    let newMessageBody = state.dialogPage.newMessageBody
+    const {state, dispatch} = props
+
+    let dialogsPage =state.dialogsPages
+    let profilePage = state.profilePage
 
     return (
         <BrowserRouter>
@@ -30,13 +29,10 @@ const App = (props: AppType) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={() => <Dialogs dialogs={dialogs}
-                                                                  messages={messages}
-                                                                  dispatch={props.store.dispatch.bind(props.store)}
-                                                                  newMessageBody={newMessageBody}/>}/>
-                    <Route path='/profile' render={() => <Profile posts={posts}
-                                                                  message={message}
-                                                                  dispatch={props.store.dispatch.bind(props.store)}/>}/>
+                    <Route path='/dialogs' render={() => <Dialogs dialogsPage={dialogsPage}
+                                                                  dispatch={dispatch}/>}/>
+                    <Route path='/profile' render={() => <Profile profilePage={profilePage}
+                                                                  dispatch={dispatch}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
