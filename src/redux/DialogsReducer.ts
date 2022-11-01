@@ -1,4 +1,3 @@
-
 const SEND_MESSAGE = "SEND-MESSAGE"
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 
@@ -51,15 +50,20 @@ let initialState = {
 export type DialogReducerType = typeof initialState
 
  const dialogsReducer = (state = initialState, action: any) : DialogReducerType => {
+
      switch(action.type) {
          case 'UPDATE-NEW-MESSAGE-BODY':
-             state.newMessageBody = action.body
-             return state
+         return {
+             ...state,
+             newMessageBody: action.body
+         }
          case 'SEND-MESSAGE':
              let body = state.newMessageBody
-             state.newMessageBody = ''
-             state.messages.push({id: 6, message: body})
-             return state
+         return {
+                 ...state,
+                 newMessageBody: '',
+                 messages: [...state.messages, {id: 7, message: body}]
+             }
          default:
              return state
      }

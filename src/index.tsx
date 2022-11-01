@@ -1,19 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import store, {RootStateType} from "./redux/reduxStore";
+import store from "./redux/reduxStore";
 import App from "./App";
 import './index.css'
-
-let renderTree = (state: RootStateType)  => {
-    ReactDOM.render(
-        <App state={state} dispatch={store.dispatch.bind(store)}/>,
-        document.getElementById('root')
-    );
-}
-renderTree(store.getState())
-store.subscribe(() => {
-    let state = store.getState()
-    renderTree(state)
-})
+import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 
 
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </BrowserRouter>, document.getElementById('root')
+);
+
+
+
+// let renderTree = (state: RootStateType) => {
+//     ReactDOM.render(
+//         <BrowserRouter>
+//             <Provider store={store}>
+//                 <App/>
+//             </Provider>
+//         </BrowserRouter>, document.getElementById('root')
+//     );
+// }
+// renderTree(store.getState())
+//
+// store.subscribe(() => {
+//     let state = store.getState()
+//     renderTree(state)
+// })
