@@ -4,16 +4,13 @@ import {UsersPropsType} from "./UsersContainer";
 import axios from "axios";
 import userPhoto from '../../assets/img/user.webp'
 
-class Users extends Component <UsersPropsType, {}>{
+class Users extends Component <UsersPropsType>{
 
-    constructor(props: UsersPropsType) {
-        super(props);
-
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                this.props.setUsers(response.data.items)
-            })
+            this.props.setUsers(response.data.items)
+        })
     }
-
 
     render() {
         return <div>
