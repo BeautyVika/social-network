@@ -9,7 +9,7 @@ import sidebarReducer from "./SidebarReducer";
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
 }
-export type ActionsTypes =ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC> |
+type ActionsTypes =ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC> |
     ReturnType<typeof sendMessageAC> | ReturnType<typeof updateNewMessageBodyAC>
 
  type MessageType= {
@@ -28,6 +28,7 @@ type DialogType ={
  type ProfilePageType ={
     posts: PostType[]
     messageForNewPost: string
+     profile: null
 }
  type DialogPageType = {
     dialogs: DialogType[]
@@ -48,7 +49,8 @@ const store: StoreType = {
                 {id: 1, message: 'Hi, how are you?', likesCount: 12},
                 {id: 2, message: 'It\'s my first post', likesCount: 15}
             ],
-            messageForNewPost: ''
+            messageForNewPost: '',
+            profile: null
         },
         dialogPage: {
             dialogs: [
