@@ -1,6 +1,8 @@
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+const SET_USERS_TOTAL_COUNT = 'SET-USERS-TOTAL-COUNT'
 
 export type UsersType = {
     id: number
@@ -23,6 +25,14 @@ type SetUsersACType = {
     type: typeof SET_USERS
     users: Array<UsersType>
 }
+type SetCurrentPageACType = {
+    type: typeof SET_CURRENT_PAGE
+    pageNumber:number
+}
+type SetUsersTotalCountACType = {
+    type: typeof SET_USERS_TOTAL_COUNT
+    totalCount: number
+}
 export const followAC = (userId: number) : FollowACType => {
     return {
         type: FOLLOW,
@@ -42,20 +52,27 @@ export const setUsersAC = (users: Array<UsersType>) : SetUsersACType => {
         users: users
     } as const
 }
-
+export const setCurrentPageAC = (pageNumber: number): SetCurrentPageACType => {
+    return{
+        type: SET_CURRENT_PAGE,
+        pageNumber: pageNumber
+    }
+}
+export const setUsersTotalCountAC = (totalUsersCount: number) : SetUsersTotalCountACType => {
+    return {
+        type: SET_USERS_TOTAL_COUNT,
+        totalCount: totalUsersCount
+    }
+}
 let initialState = {
-    users: [
-        // {id: 1, photoURL: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/4cad62d0-be24-4f96-8b54-1edbc54ffe4c/280x420',
-        //     followed: false, fullName: 'Dmitry', status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-        // {id: 1, photoURL: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/4cad62d0-be24-4f96-8b54-1edbc54ffe4c/280x420',
-        //     followed: true, fullName: 'Alexandr', status: 'I am a boss too', location: {city: 'Moskow', country: 'Russia'}},
-        // {id: 1, photoURL: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/4cad62d0-be24-4f96-8b54-1edbc54ffe4c/280x420',
-        //     followed: false, fullName: 'Andrew', status: 'I am a boss too', location: {city: 'Kiev', country: 'Ukraine'}}
-    ] as Array<UsersType>
+    users: [] as Array<UsersType>,
+    pageSize: 20,
+    totalUsersCount: 0,
+    currentPage: 2
 }
 export type UsersReducerType = typeof initialState
 
-const usersReducer = (state = initialState, action: any):  UsersReducerType => {
+ const usersReducer = (state = initialState, action: any):  UsersReducerType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -70,7 +87,17 @@ const usersReducer = (state = initialState, action: any):  UsersReducerType => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: action.users
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.pageNumber
+            }
+        case SET_USERS_TOTAL_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.totalCount
             }
         default:
             return state
