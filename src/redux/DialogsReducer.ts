@@ -48,8 +48,9 @@ let initialState = {
     newMessageBody: ''
 }
 export type DialogReducerType = typeof initialState
+type ActionType = UpdateNewMessageBodyACType | SendMessageACType
 
- const dialogsReducer = (state = initialState, action: any) : DialogReducerType => {
+ const dialogsReducer = (state = initialState, action: ActionType) : DialogReducerType => {
 
      switch(action.type) {
          case 'UPDATE-NEW-MESSAGE-BODY':

@@ -83,8 +83,9 @@ let initialState = {
     isFetching: false
 }
 export type UsersReducerType = typeof initialState
+type ActionType = ToggleIsFetchingACType | SetCurrentPageACType | SetUsersACType | UnfollowACType | FollowACType | SetTotalUsersCountACType
 
- const usersReducer = (state = initialState, action: any):  UsersReducerType => {
+ const usersReducer = (state = initialState, action: ActionType):  UsersReducerType => {
     switch (action.type) {
         case FOLLOW:
             return {

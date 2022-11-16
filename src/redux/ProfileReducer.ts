@@ -40,6 +40,7 @@ export type ProfileType ={
     },
     userId: number | null
 }
+
 export const addPostAC = (postMessage: string): AddPostACType=> {
     return {
         type: ADD_POST,
@@ -69,10 +70,10 @@ let initialState = {
     profile: null
 }
 export type ProfileReducerType = typeof initialState
+type ActionType = AddPostACType | ChangeNewTextACType | SetUserProfileACType
 
-const profileReducer = (state = initialState, action: any):  ProfileReducerType => {
+const profileReducer = (state = initialState, action: ActionType):  ProfileReducerType => {
     switch (action.type) {
-
         case ADD_POST:
             const newPost: PostType = {
                 id: 5,
