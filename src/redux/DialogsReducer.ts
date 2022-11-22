@@ -19,13 +19,13 @@ type UpdateNewMessageBodyACType = {
 export const sendMessageAC = () : SendMessageACType => {
     return {
         type: SEND_MESSAGE
-    }
+    }as const
 }
 export const updateNewMessageBodyAC = (body: string): UpdateNewMessageBodyACType => {
     return{
         type: UPDATE_NEW_MESSAGE_BODY,
         body: body
-    }
+    }as const
 }
 
 let initialState = {

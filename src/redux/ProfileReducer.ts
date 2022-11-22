@@ -57,7 +57,7 @@ export const setUserProfile = (profile: ProfileType): SetUserProfileACType => {
     return{
         type: SET_USER_PROFILE,
         profile
-    }
+    }as const
 }
 
 let initialState = {

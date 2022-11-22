@@ -16,7 +16,6 @@ export type UsersType = {
 type FollowACType = {
     type: typeof FOLLOW,
     userId: number
-
 }
 type UnfollowACType = {
     type: typeof UNFOLLOW
@@ -42,7 +41,6 @@ export const follow = (userId: number) : FollowACType => {
     return {
         type: FOLLOW,
         userId
-
     } as const
 }
 export const unfollow = (userId: number) : UnfollowACType => {
@@ -61,19 +59,19 @@ export const setCurrentPage = (pageNumber: number): SetCurrentPageACType => {
     return{
         type: SET_CURRENT_PAGE,
         pageNumber
-    }
+    }as const
 }
 export const setTotalUsersCount = (totalUsersCount: number) : SetTotalUsersCountACType => {
     return {
         type: SET_USERS_TOTAL_COUNT,
         totalCount: totalUsersCount
-    }
+    }as const
 }
 export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingACType => {
     return {
         type: TOGGLE_IS_FETCHING,
         isFetching
-    }
+    }as const
 }
 let initialState = {
     users: [] as Array<UsersType>,
