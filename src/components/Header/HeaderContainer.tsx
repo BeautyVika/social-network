@@ -21,9 +21,7 @@ class HeaderContainer extends Component <HeaderContainerPropsType> {
 
     componentDidMount() {
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })
+        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`)
             .then(response => {
                 if(response.data.resultCode === 0){
                     let {id, email, login} = response.data.data
