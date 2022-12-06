@@ -21,5 +21,8 @@ export const usersAPI = {
         return instance.delete(`follow/${id}`).then(response => {
             return response.data
         })
+    },
+    getProfile(id: string){
+        return instance.get(`profile/${id}`)
     }
 }
