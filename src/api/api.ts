@@ -26,3 +26,8 @@ export const usersAPI = {
         return instance.get(`profile/${id}`)
     }
 }
+export const authAPI = {
+    me() {
+       return instance.get(`auth/me`)
+    }
+}

@@ -7,7 +7,6 @@ type ProfilePropsType = {
     profile: ProfileType | null
     posts: Array<PostType>
     messageForNewPost: string
-    setUserProfile: (profile: ProfileType) => void
 }
 
 const Profile = (props: ProfilePropsType) => {

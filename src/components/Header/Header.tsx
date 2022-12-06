@@ -7,9 +7,9 @@ type HeaderPropsType ={
     email: string
     login: string
     isAuth: boolean
-    setAuthUserDataAC: (userId: number, email: string, login: string) => void
 }
 const Header = (props: HeaderPropsType) => {
+    debugger
     return (
         <header className={s.header}>
             <img

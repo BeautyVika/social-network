@@ -1,3 +1,6 @@
+import {DispatchType} from "./reduxStore";
+import {usersAPI} from "../api/api";
+
 const ADD_POST = "ADD-POST"
 const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
@@ -98,4 +101,14 @@ const profileReducer = (state = initialState, action: ActionType):  ProfileReduc
             return state
     }
 }
+
+export const getUserProfile = (userId: string) => {
+
+    return (dispatch: DispatchType) => {
+        usersAPI.getProfile(userId).then(response => {
+            dispatch(setUserProfile(response.data))
+        })
+    }
+}
+
 export default profileReducer
