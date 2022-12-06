@@ -27,12 +27,13 @@ let initialState= {
 }
 export type AuthReducerType = typeof initialState
 
-const AuthReducer = (state = initialState, action: any): AuthReducerType => {
+const AuthReducer = (state: AuthType = initialState, action: any): AuthReducerType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isAuth: false
             }
         default:
             return state
