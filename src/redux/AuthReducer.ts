@@ -33,7 +33,7 @@ const AuthReducer = (state: AuthType = initialState, action: any): AuthReducerTy
             return {
                 ...state,
                 ...action.data,
-                isAuth: false
+                isAuth: true
             }
         default:
             return state
