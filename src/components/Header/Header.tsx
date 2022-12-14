@@ -9,7 +9,6 @@ type HeaderPropsType ={
     isAuth: boolean
 }
 const Header = (props: HeaderPropsType) => {
-    debugger
     return (
         <header className={s.header}>
             <img
