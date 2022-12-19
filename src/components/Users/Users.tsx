@@ -18,19 +18,19 @@ type UsersPropsType = {
 
 const Users = (props: UsersPropsType) => {
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    let pages = []
+    let pagesCount = Math.ceil(props.totalUsersCount > 50 ? 900 : props.totalUsersCount) / props.pageSize
+    let pages: Array<number> = []
     for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
+        pages = [...pages, i]
     }
     return (
         <div>
             <div>
-                {pages.map(p => {
-                    return <span className={props.currentPage === p ? s.selectedPage : ''}
-                                 key={p}
-                                 onClick={(e) => props.onPageChanged(p)}>
-                       {p}
+                {pages.map( (page) => {
+                    return <span className={props.currentPage === page ? s.selectedPage : ''}
+                                 key={page}
+                                 onClick={(e) => props.onPageChanged(page)}>
+                       {page}{' '}
                    </span>
                 })}
             </div>
@@ -39,7 +39,8 @@ const Users = (props: UsersPropsType) => {
                 <span>
                     <div>
                         <NavLink to={'/profile/' + u.id}>
-                             <img className={s.userPhoto} src={u.photos.small != null ? u.photos.small : userPhoto}/>
+                             <img className={s.userPhoto} src={u.photos.small != null ? u.photos.small : userPhoto}
+                                  alt='user photo'/>
                         </NavLink>
                     </div>
                     <div>
