@@ -6,7 +6,6 @@ import {PostType, ProfileType} from "../../redux/ProfileReducer";
 type ProfilePropsType = {
     profile: ProfileType | null
     posts: Array<PostType>
-    messageForNewPost: string
     status: string
     updateStatus: (status: string) => void
 }

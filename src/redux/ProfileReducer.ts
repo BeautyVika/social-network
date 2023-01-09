@@ -2,7 +2,6 @@ import {DispatchType} from "./reduxStore";
 import {profileAPI, usersAPI} from "../api/api";
 
 const ADD_POST = "ADD-POST"
-const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
 
@@ -14,10 +13,6 @@ export type PostType = {
 type AddPostACType = {
     type: typeof ADD_POST
     postMessage: string
-}
-type ChangeNewTextACType = {
-    type: typeof CHANGE_NEW_TEXT
-    newText: string
 }
 type SetUserProfileACType = {
     type: typeof SET_USER_PROFILE
@@ -55,12 +50,7 @@ export const addPostAC = (postMessage: string): AddPostACType=> {
         postMessage
     } as const
 }
-export const changeNewTextAC = (newText: string): ChangeNewTextACType => {
-    return {
-        type: CHANGE_NEW_TEXT,
-        newText
-    } as const
-}
+
 export const setUserProfile = (profile: ProfileType): SetUserProfileACType => {
     return{
         type: SET_USER_PROFILE,
@@ -80,17 +70,15 @@ let initialState: ProfileReducerType = {
         {id: 2, message: 'It\'s my first post', likesCount: 15},
         {id: 3, message: 'Bla-bla', likesCount: 10}
     ],
-    messageForNewPost: '',
     profile: null,
     status: ''
 }
 export type ProfileReducerType = {
     posts: Array<PostType>
-    messageForNewPost: string
     profile:  ProfileType | null
     status: string
 }
-type ActionType = AddPostACType | ChangeNewTextACType | SetUserProfileACType | SetStatusACType
+type ActionType = AddPostACType | SetUserProfileACType | SetStatusACType
 
 const profileReducer = (state = initialState, action: ActionType):  ProfileReducerType => {
     switch (action.type) {
@@ -104,11 +92,6 @@ const profileReducer = (state = initialState, action: ActionType):  ProfileReduc
                 ...state,
                 posts: [...state.posts, newPost]
             }
-        case CHANGE_NEW_TEXT:
-        return {
-            ...state,
-            messageForNewPost: action.newText
-        }
         case SET_USER_PROFILE:
             return {
                 ...state,
