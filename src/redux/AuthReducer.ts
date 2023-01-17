@@ -49,17 +49,16 @@ export const setAuthUserDataAC = (userId: number | null, email: string | null,
     } as const
 }
 
-export const getAuthUserData = () => {
-    return (dispatch: DispatchType) => {
-        authAPI.me()
-            .then(response => {
-            if(response.data.resultCode === 0){
+export const getAuthUserData = () => (dispatch: DispatchType) => {
+    return authAPI.me()
+        .then(response => {
+            if (response.data.resultCode === 0) {
                 let {id, email, login} = response.data.data
                 dispatch(setAuthUserDataAC(id, email, login, true))
             }
         })
-    }
 }
+
 
 export const login = (email: string, password: string, rememberMe: boolean) => {
 
