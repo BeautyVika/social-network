@@ -146,14 +146,14 @@ export type UsersActionsType = ToggleIsFetchingACType | SetCurrentPageACType | S
     }
 }
 
-export const getUsers = (currentPage: number, pageSize: number): AppThunkType => {
+export const requestUsers = (currentPage: number, pageSize: number): AppThunkType => {
 
     return (dispatch) => {
 
         dispatch(toggleIsFetching(true))
+        dispatch(setCurrentPage(currentPage))
 
         usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(setCurrentPage(currentPage))
             dispatch(toggleIsFetching(false))
             dispatch(setUsers(data.items))
             dispatch(setTotalUsersCount(data.totalCount))

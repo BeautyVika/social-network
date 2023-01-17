@@ -1,4 +1,5 @@
 import {getAuthUserData} from "./AuthReducer";
+import {AppThunkType} from "./reduxStore";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS'
 
@@ -29,7 +30,7 @@ export const initializedSuccessAC = (): InitializedSuccessActionType => {
         type: INITIALIZED_SUCCESS
     }as const
 }
-export const initializeApp = () => (dispatch: any) => {
+export const initializeApp = (): AppThunkType => (dispatch) => {
          dispatch(getAuthUserData())
              .then(() => {
             dispatch(initializedSuccessAC())
