@@ -1,5 +1,5 @@
 import {usersAPI} from "../api/api";
-import {DispatchType} from "./reduxStore";
+import {AppThunkType} from "./reduxStore";
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = 'UNFOLLOW'
@@ -99,10 +99,10 @@ let initialState = {
     followingInProgress: [] as Array<number>
 }
 export type UsersReducerType = typeof initialState
-type ActionType = ToggleIsFetchingACType | SetCurrentPageACType | SetUsersACType | UnfollowACType | FollowACType
+export type UsersActionsType = ToggleIsFetchingACType | SetCurrentPageACType | SetUsersACType | UnfollowACType | FollowACType
                   | SetTotalUsersCountACType | ToggleFollowingProgressType
 
- const usersReducer = (state = initialState, action: ActionType):  UsersReducerType => {
+ const usersReducer = (state = initialState, action: UsersActionsType):  UsersReducerType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -146,9 +146,9 @@ type ActionType = ToggleIsFetchingACType | SetCurrentPageACType | SetUsersACType
     }
 }
 
-export const getUsers = (currentPage: number, pageSize: number) => {
+export const getUsers = (currentPage: number, pageSize: number): AppThunkType => {
 
-    return (dispatch: DispatchType) => {
+    return (dispatch) => {
 
         dispatch(toggleIsFetching(true))
 
@@ -161,9 +161,9 @@ export const getUsers = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const follow = (id: number) => {
+export const follow = (id: number): AppThunkType => {
 
-    return (dispatch: DispatchType) => {
+    return (dispatch) => {
         dispatch(toggleFollowingProgress(true, id))
         usersAPI.follow(id).then(data => {
             if (data.resultCode === 0) {
@@ -174,9 +174,9 @@ export const follow = (id: number) => {
     }
 }
 
-export const unfollow = (id: number) => {
+export const unfollow = (id: number): AppThunkType => {
 
-    return (dispatch: DispatchType) => {
+    return (dispatch) => {
         dispatch(toggleFollowingProgress(true, id))
         usersAPI.unfollow(id).then(data => {
             if(data.resultCode === 0) {
