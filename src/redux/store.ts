@@ -1,5 +1,5 @@
-import profileReducer, {addPostAC, changeNewTextAC} from "./ProfileReducer";
-import dialogsReducer, {sendMessageAC, updateNewMessageBodyAC} from "./DialogsReducer";
+import profileReducer, {addPostAC} from "./ProfileReducer";
+import dialogsReducer, {sendMessageAC} from "./DialogsReducer";
 import sidebarReducer from "./SidebarReducer";
 
  type StoreType = {
@@ -9,8 +9,8 @@ import sidebarReducer from "./SidebarReducer";
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
 }
-type ActionsTypes =ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC> |
-    ReturnType<typeof sendMessageAC> | ReturnType<typeof updateNewMessageBodyAC>
+type ActionsTypes =ReturnType<typeof addPostAC> |
+    ReturnType<typeof sendMessageAC>
 
  type MessageType= {
     id: number
