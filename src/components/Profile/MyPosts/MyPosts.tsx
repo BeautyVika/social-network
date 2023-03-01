@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/MyPost'
 import {MyPostsPropsType} from "./MyPostsContainer";
@@ -12,7 +12,8 @@ type MyPostFormType = {
 
 const maxLength10 = maxLengthCreator(10)
 
-const MyPosts = (props: MyPostsPropsType) => {
+const MyPosts = memo((props: MyPostsPropsType) => {
+    console.log('Me posts')
 
     let postsElement = props.profilePage.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 
@@ -31,7 +32,7 @@ const MyPosts = (props: MyPostsPropsType) => {
             </div>
         </div>
     )
-}
+})
 
 const AddNewPostForm: React.FC<InjectedFormProps<MyPostFormType>> = (props) => {
     return (
