@@ -14,21 +14,3 @@ ReactDOM.render(
         </Provider>
     </BrowserRouter>, document.getElementById('root')
 );
-
-
-
-// let renderTree = (state: RootStateType) => {
-//     ReactDOM.render(
-//         <BrowserRouter>
-//             <Provider store={store}>
-//                 <App/>
-//             </Provider>
-//         </BrowserRouter>, document.getElementById('root')
-//     );
-// }
-// renderTree(store.getState())
-//
-// store.subscribe(() => {
-//     let state = store.getState()
-//     renderTree(state)
-// })

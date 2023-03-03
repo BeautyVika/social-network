@@ -35,19 +35,20 @@ type MapDispatchPropsType = {
     requestUsers: (currentPage: number, pageSize: number) => void
 }
 
-class UsersContainer extends Component <UsersPropsType>{
+class UsersContainer extends Component <UsersPropsType> {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage, pageSize} = this.props
+        this.props.requestUsers(currentPage, pageSize)
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.requestUsers(pageNumber, this.props.pageSize)
+        const {pageSize} = this.props
+        this.props.requestUsers(pageNumber, pageSize)
 
     }
 
     render() {
-
         return <>
             {this.props.isFetching ? <Preloader/> : null}
 
@@ -74,6 +75,6 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         followingInProgress: followingInProgress(state)
     }
 }
-export default compose <React.ComponentType>(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {follow, unfollow, setCurrentPage, requestUsers})
 )(UsersContainer)

@@ -3,25 +3,7 @@ import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
 
-const SET_USER_DATA = "SET-USER-DATA"
-
-export type AuthType = {
-    userId: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean
-}
-
-export type SetUserDataACType = {
-    type: typeof SET_USER_DATA
-    payload: {
-        userId: number | null
-        email: string | null
-        login: string | null
-        isAuth: boolean
-    }
-}
-export type AuthActionsType = SetUserDataACType
+const SET_USER_DATA = "auth/SET-USER-DATA"
 
 let initialState = {
     userId: 0,
@@ -32,15 +14,12 @@ let initialState = {
 const AuthReducer = (state: AuthType = initialState, action: AuthActionsType): AuthType => {
     switch (action.type) {
         case SET_USER_DATA:
-            return {
-                ...state,
-                ...action.payload,
-            }
+            return {...state, ...action.payload}
         default:
             return state
     }
 }
-
+//actions
 export const setAuthUserDataAC = (userId: number | null, email: string | null,
                                   login: string | null, isAuth: boolean): SetUserDataACType => {
     return {
@@ -60,8 +39,7 @@ export const getAuthUserData = (): ThunkAction<Promise<any>, AppStateType, unkno
             }
         })
 }
-
-
+//thunks
 export const login = (email: string, password: string, rememberMe: boolean): AppThunkType => {
 
     return (dispatch) => {
@@ -76,7 +54,6 @@ export const login = (email: string, password: string, rememberMe: boolean): App
             })
     }
 }
-
 export const logout = (): AppThunkType => {
     return (dispatch) => {
         authAPI.logout()
@@ -87,4 +64,22 @@ export const logout = (): AppThunkType => {
             })
     }
 }
+//types
+export type AuthType = {
+    userId: number | null
+    email: string | null
+    login: string | null
+    isAuth: boolean
+}
+export type SetUserDataACType = {
+    type: typeof SET_USER_DATA
+    payload: {
+        userId: number | null
+        email: string | null
+        login: string | null
+        isAuth: boolean
+    }
+}
+export type AuthActionsType = SetUserDataACType
+
 export default AuthReducer

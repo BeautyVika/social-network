@@ -3,14 +3,6 @@ import {AppThunkType} from "./reduxStore";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS'
 
-export type AppType ={
-    initialized: boolean
-}
-type InitializedSuccessActionType = {
-    type: typeof INITIALIZED_SUCCESS
-}
-export type AppActionsType = InitializedSuccessActionType
-
 let initialState= {
    initialized: false
 }
@@ -25,16 +17,24 @@ const AppReducer = (state:AppType = initialState, action: AppActionsType): AppTy
             return state
     }
 }
+//action
 export const initializedSuccessAC = (): InitializedSuccessActionType => {
-    return {
-        type: INITIALIZED_SUCCESS
-    }as const
+    return {type: INITIALIZED_SUCCESS}as const
 }
+//thunk
 export const initializeApp = (): AppThunkType => (dispatch) => {
          dispatch(getAuthUserData())
              .then(() => {
             dispatch(initializedSuccessAC())
         })
 }
+//types
+export type AppType ={
+    initialized: boolean
+}
+type InitializedSuccessActionType = {
+    type: typeof INITIALIZED_SUCCESS
+}
+export type AppActionsType = InitializedSuccessActionType
 
 export default AppReducer

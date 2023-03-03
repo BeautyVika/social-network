@@ -1,25 +1,5 @@
 const SEND_MESSAGE = "SEND-MESSAGE"
 
-export type DialogType = {
-    id: number
-    name: string
-}
-export type MessageType = {
-    id: number
-    message: string
-}
-type SendMessageACType ={
-    type: typeof SEND_MESSAGE
-    newMessageBody: string
-}
-
-export const sendMessageAC = (newMessageBody: string) : SendMessageACType => {
-    return {
-        type: SEND_MESSAGE,
-        newMessageBody: newMessageBody
-    }as const
-}
-
 let initialState = {
     dialogs: [
         {id: 1, name: 'Vika'},
@@ -38,20 +18,33 @@ let initialState = {
         {id: 6, message: ''}
     ] as Array<MessageType>,
 }
-export type DialogReducerType = typeof initialState
-export type DialogsActionType = SendMessageACType
-
  const dialogsReducer = (state = initialState, action: DialogsActionType) : DialogReducerType => {
 
      switch(action.type) {
          case 'SEND-MESSAGE':
              let body = action.newMessageBody
-         return {
-                 ...state,
-                 messages: [...state.messages, {id: 7, message: body}]
-             }
+         return {...state, messages: [...state.messages, {id: 7, message: body}]}
          default:
              return state
      }
+}
+//action
+export const sendMessageAC = (newMessageBody: string) : SendMessageACType => {
+    return {type: SEND_MESSAGE, newMessageBody: newMessageBody}as const
+}
+//types
+export type DialogReducerType = typeof initialState
+export type DialogsActionType = SendMessageACType
+export type DialogType = {
+    id: number
+    name: string
+}
+export type MessageType = {
+    id: number
+    message: string
+}
+type SendMessageACType ={
+    type: typeof SEND_MESSAGE
+    newMessageBody: string
 }
 export default dialogsReducer
