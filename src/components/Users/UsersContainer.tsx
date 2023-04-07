@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {AppStateType} from "redux/reduxStore"
 import {
     setCurrentPage,
-    requestUsers, follow, unfollow, UsersType,
+    requestUsers, follow, unfollow, UsersType, setPageSize,
 } from "redux/UsersReducer"
 import Users from "./Users"
 import Preloader from "../Common/Preloader/Preloader"
@@ -31,18 +31,18 @@ type MapDispatchPropsType = {
     follow: (userId: number) => void
     unfollow: (userId: number) => void
     setCurrentPage: (pageNumber: number) => void
+    setPageSize: (pageSize: number) => void
     requestUsers: (currentPage: number, pageSize: number) => void
 }
 
 class UsersContainer extends Component <UsersPropsType> {
 
     componentDidMount() {
-        const {currentPage, pageSize} = this.props
-        this.props.requestUsers(currentPage, pageSize)
+        const {requestUsers, currentPage, pageSize} = this.props
+        requestUsers(currentPage, pageSize)
     }
 
-    onPageChanged = (pageNumber: number) => {
-        const {pageSize} = this.props
+    onPageChanged = (pageNumber: number, pageSize: number = 10) => {
         this.props.requestUsers(pageNumber, pageSize)
 
     }
@@ -74,5 +74,5 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, requestUsers})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, requestUsers, setPageSize})
 )(UsersContainer)

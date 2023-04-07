@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom"
-import Navigation from './Navigation'
+import Navigation from 'components/Header/Navigation/Navigation'
 import Diversity3Icon from '@mui/icons-material/Diversity3'
 import IconButton from '@mui/material/IconButton'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
@@ -19,9 +19,8 @@ const Header = (props: HeaderPropsType) => {
     }
     return (
         <header className={s.headerContainer}>
-            {/*<div className={s.header}>*/}
                 <div className={s.title}>
-                    <Diversity3Icon sx={{color: 'ghostwhite'}}/>
+                    <Diversity3Icon sx={{color: 'ghostwhite', marginRight: '5px'}}/>
                     <span className={s.name}>SOCIAL NETWORK</span>
                 </div>
 
@@ -38,7 +37,6 @@ const Header = (props: HeaderPropsType) => {
                         </div>
                         : <NavLink className={(isActive) => isActive ? s.active : s.link} to={'/login'}>Login</NavLink>}
                 </div>
-            {/*</div>*/}
         </header>
     )
 }

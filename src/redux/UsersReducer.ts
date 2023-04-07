@@ -15,7 +15,7 @@ let initialState = {
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false,
+    isFetching: true,
     followingInProgress: [] as Array<number>
 }
 
@@ -32,7 +32,7 @@ let initialState = {
                 users: state.users.map(u => u.id === action.userId ? {...u, followed: false} : u)
             }
         case SET_USERS:
-            return {...state, users: action.users}
+            return {...state, users: [...action.users]}
         case SET_CURRENT_PAGE:
             return {...state, currentPage: action.pageNumber}
         case SET_PAGE_SIZE:
@@ -46,7 +46,7 @@ let initialState = {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId ]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         default:
             return state
@@ -66,7 +66,7 @@ export const setUsers = (users: Array<UsersType>) : SetUsersACType => {
 export const setCurrentPage = (pageNumber: number): SetCurrentPageACType => {
     return{type: SET_CURRENT_PAGE, pageNumber}as const
 }
-export const SetPageSizeAC = (pageSize: number): SetPageSizeACType => {
+export const setPageSize = (pageSize: number): SetPageSizeACType => {
     return {type: SET_PAGE_SIZE, pageSize} as const
 }
 export const setTotalUsersCount = (totalUsersCount: number) : SetTotalUsersCountACType => {
@@ -83,11 +83,12 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number): To
 export const requestUsers = (currentPage: number, pageSize: number): AppThunkType => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
-        dispatch(setCurrentPage(currentPage))
 
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false))
             dispatch(setUsers(data.items))
+            dispatch(setCurrentPage(currentPage))
+            dispatch(setPageSize(pageSize))
             dispatch(setTotalUsersCount(data.totalCount))
         })
     }

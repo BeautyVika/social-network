@@ -15,7 +15,8 @@ const Paginator: FC<PaginatorPropsType> = ({currentPage, pageSize,totalUsersCoun
     // for (let i = 1; i <= pagesCount; i++) {
     //     pages = [...pages, i]
     // }
-    const [rowsPerPage, setRowsPerPage] = React.useState(pageSize);
+    const [rowsPerPage, setRowsPerPage] = React.useState(pageSize)
+
     useEffect(() => {
         if (pageSize === rowsPerPage) return
         setRowsPerPage(pageSize)
@@ -34,8 +35,10 @@ const Paginator: FC<PaginatorPropsType> = ({currentPage, pageSize,totalUsersCoun
     return <TablePagination count={totalUsersCount}
                             component="div"
                             labelRowsPerPage="Users per page:"
-                            page={currentPage}
+                            page={currentPage - 1}
                             rowsPerPage={rowsPerPage}
+                            showFirstButton
+                            showLastButton
                             onRowsPerPageChange={handleChangeRowsPerPage}
                             onPageChange={handleChangePage}/>
 

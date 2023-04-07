@@ -24,7 +24,7 @@ const Users = (props: UsersPropsType) => {
                        pageSize={props.pageSize}
                        onPageChanged={props.onPageChanged}/>
 
-            <div className={s.user}>
+            <div className={s.users}>
                 {props.users.map(u => <User key={u.id}
                                             user={u}
                                             follow={props.follow}
