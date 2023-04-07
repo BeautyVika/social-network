@@ -1,9 +1,13 @@
 import React from 'react';
-import loader from "../../Users/loader.gif";
+import s from "./Preloader.module.css"
+import CircularProgress from "@mui/material/CircularProgress"
 
 const Preloader = () => {
-    return(
-        <img src={loader}/>
+    return (
+        <div className={s.preloader}>
+            <CircularProgress color='secondary'
+                              size='56px'/>
+        </div>
     )
 }
 export default Preloader
