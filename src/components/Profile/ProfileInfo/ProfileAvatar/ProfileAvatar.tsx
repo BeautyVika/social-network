@@ -24,7 +24,6 @@ const ProfileAvatar: FC<ProfileAvatarPropsType> = (
         <div className={s.container}>
             <Avatar
                 src={avatar ? avatar : defaultAvatar}
-                // style={{ width: `${size}px`, height: `${size}px`}}
                 style={{ width: `${size}px`, height: `${size}px`, position: 'absolute', bottom: '-117px',
                     left: '120px'}}
                 alt="ava"
@@ -44,7 +43,7 @@ const ProfileAvatar: FC<ProfileAvatarPropsType> = (
                             position: 'absolute',
                             bottom: '-114px',
                             right: '121px',
-                            border: '1px solid #685F74',
+                            border: '1px solid #CA9CE1',
                         }}
                     >
                         <CloudUploadIcon />

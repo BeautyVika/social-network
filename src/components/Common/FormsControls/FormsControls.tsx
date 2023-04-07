@@ -1,8 +1,9 @@
-import React, {HTMLInputTypeAttribute} from 'react';
-import {WrappedFieldInputProps} from "redux-form";
-import {WrappedFieldMetaProps} from "redux-form/lib/Field";
+import React, {HTMLInputTypeAttribute} from 'react'
+import {WrappedFieldInputProps} from "redux-form"
+import {WrappedFieldMetaProps} from "redux-form/lib/Field"
 import s from './FormsControls.module.css'
-import TextField from "@mui/material/TextField/TextField";
+import TextField from "@mui/material/TextField/TextField"
+import Checkbox from "@mui/material/Checkbox"
 
 type FormsControlsType = {
     input: WrappedFieldInputProps
@@ -25,15 +26,17 @@ const FormControl = ({input, meta, ...props}: FormsControlsType) => {
     )
 }
 
-export const TextAreA = ({input, meta, placeholder, ...props}: FormsControlsType) => {
+export const Textarea = ({input, meta: {touched, error}, placeholder, ...props}: FormsControlsType) => {
     return <TextField {...input}
                       color='secondary'
                       fullWidth
+                      error={touched && error}
+                      helperText={touched && error}
                       label={placeholder}/>
 }
-
-export const Textarea = ({input, meta, ...props}: FormsControlsType) => {
-    return <FormControl input={input} meta={meta} {...props}><textarea {...input} {...props}/></FormControl>
+export const CheckBox = ({input, meta, ...props}: FormsControlsType) => {
+    return <Checkbox {...input}
+                     color="secondary"/>
 }
 
 export const Input = ({input, meta, ...props}: FormsControlsType) => {

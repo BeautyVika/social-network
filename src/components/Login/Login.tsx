@@ -1,9 +1,10 @@
-import React from 'react';
-import {connect} from "react-redux";
-import {login} from "../../redux/AuthReducer";
-import {Redirect} from "react-router-dom";
-import {AppStateType} from "../../redux/reduxStore";
-import {FormDataType, LoginReduxForm} from "./LoginForm";
+import React from 'react'
+import {connect} from "react-redux"
+import {login} from "redux/AuthReducer"
+import {Redirect} from "react-router-dom"
+import {AppStateType} from "redux/reduxStore"
+import {FormDataType, LoginReduxForm} from "components/Login/LoginForm/LoginForm"
+import s from "./Login.module.css"
 
 type LoginPropsType = {
     login: (email: string, password: string, rememberMe: boolean) => void
@@ -18,10 +19,14 @@ const Login = (props: LoginPropsType) => {
     if (props.isAuth) {
         return <Redirect to={'/profile'}/>
     }
-    return <div>
-        <h1>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit}/>
-    </div>
+    return (
+        <div className={s.loginContainer}>
+            <h1 className={s.title}>Login</h1>
+            <div className={s.loginForm}>
+                <LoginReduxForm onSubmit={onSubmit}/>
+            </div>
+        </div>
+    )
 }
 
 const mapStateToProps = (state: AppStateType): {isAuth: boolean} => {
