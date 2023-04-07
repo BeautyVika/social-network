@@ -4,6 +4,7 @@ import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
 
 const SET_USER_DATA = "auth/SET-USER-DATA"
+const SET_IS_AUTH = "SET-IS-AUTH"
 
 let initialState = {
     userId: 0,
@@ -15,6 +16,8 @@ const AuthReducer = (state: AuthType = initialState, action: AuthActionsType): A
     switch (action.type) {
         case SET_USER_DATA:
             return {...state, ...action.payload}
+        case SET_IS_AUTH:
+            return {...state, isAuth: action.isAuth}
         default:
             return state
     }
@@ -28,6 +31,9 @@ export const setAuthUserDataAC = (userId: number | null, email: string | null,
             userId, email, login, isAuth
         }
     } as const
+}
+export const setIsAuth = (isAuth: boolean) => {
+    return {type: SET_IS_AUTH, isAuth} as const
 }
 
 export const getAuthUserData = (): ThunkAction<Promise<any>, AppStateType, unknown, AuthActionsType> => (dispatch) => {
@@ -60,6 +66,7 @@ export const logout = (): AppThunkType => {
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(setAuthUserDataAC(null, null, null, false))
+                    dispatch(setIsAuth(false))
                 }
             })
     }
@@ -80,6 +87,10 @@ export type SetUserDataACType = {
         isAuth: boolean
     }
 }
-export type AuthActionsType = SetUserDataACType
+export type SetIsAuthACType = {
+    type: typeof SET_IS_AUTH
+    isAuth: boolean
+}
+export type AuthActionsType = SetUserDataACType | SetIsAuthACType
 
 export default AuthReducer

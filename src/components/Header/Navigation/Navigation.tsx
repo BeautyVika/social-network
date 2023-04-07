@@ -1,9 +1,9 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
+import React from 'react'
+import {NavLink} from "react-router-dom"
 import s from "components/Header/Navigation/Navigation.module.css"
-import PersonIcon from '@mui/icons-material/Person';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import GroupIcon from '@mui/icons-material/Group';
+import PersonIcon from '@mui/icons-material/Person'
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import GroupIcon from '@mui/icons-material/Group'
 
 const Navigation = () => {
     return (

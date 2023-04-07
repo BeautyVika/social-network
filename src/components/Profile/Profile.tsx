@@ -3,6 +3,8 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo"
 import MyPostsContainer from "./MyPosts/MyPostsContainer"
 import {PostType, ProfileType} from "redux/ProfileReducer"
 import s from "./Profile.module.css"
+import Preloader from "components/Common/Preloader/Preloader"
+import {Redirect} from "react-router-dom";
 
 type ProfilePropsType = {
     profile: ProfileType | null
@@ -10,9 +12,18 @@ type ProfilePropsType = {
     status: string
     updateStatus: (status: string) => void
     changePhotoTC: (photo: File) => void
+    isAuth: boolean
 }
 
 const Profile = (props: ProfilePropsType) => {
+
+    if(!props.isAuth) {
+        return <Redirect to='/login' />
+    }
+
+    if (!props.profile) {
+        return <Preloader/>
+    }
 
     return (
         <div>
