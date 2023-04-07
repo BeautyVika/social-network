@@ -5,7 +5,7 @@ import Message from './Message/Message'
 import {DialogsPagePropsType} from "./DialogsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../Common/FormsControls/FormsControls";
-import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {maxLengthCreator, required} from "utils/validators/validators";
 
 type NewMessageFormType = {
     newMessageBody: string

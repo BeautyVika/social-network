@@ -1,25 +1,47 @@
 import {AppThunkType} from "./reduxStore";
-import {profileAPI, usersAPI} from "../api/api";
+import {profileAPI, usersAPI} from "api/api";
 
 const ADD_POST = "ADD-POST"
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
+const UPDATE_PHOTO = 'UPDATE-PHOTO'
 
 let initialState: ProfileReducerType = {
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 12},
         {id: 2, message: 'It\'s my first post', likesCount: 15},
-        {id: 3, message: 'Bla-bla', likesCount: 10}
+        {id: 3, message: 'I\'m ok', likesCount: 10}
     ],
-    profile: null,
+    profile: {
+        aboutMe: '',
+        contacts: {
+            facebook: '',
+            website: '',
+            vk: '',
+            twitter: '',
+            instagram: '',
+            youtube: '',
+            github: '',
+            mainLink: '',
+        },
+        lookingForAJob: false,
+        lookingForAJobDescription: '',
+        fullName: '',
+        userId: 0,
+        photos: {
+            small: '',
+            large: '',
+        }
+    },
     status: ''
 }
 export type ProfileReducerType = {
     posts: Array<PostType>
-    profile:  ProfileType | null
+    profile:  ProfileType
     status: string
 }
-export type ProfileActionsType = AddPostACType | SetUserProfileACType | SetStatusACType | DeletePostActionType
+export type ProfileActionsType = AddPostACType | SetUserProfileACType
+    | SetStatusACType | DeletePostActionType | ChangeAvatarACType
 
 const profileReducer = (state = initialState, action: ProfileActionsType):  ProfileReducerType => {
     switch (action.type) {
@@ -42,6 +64,17 @@ const profileReducer = (state = initialState, action: ProfileActionsType):  Prof
             return {...state, profile: action.profile}
         case SET_STATUS:
             return {...state, status: action.status}
+        case UPDATE_PHOTO:
+            return {
+            ...state,
+            profile: {
+                ...state.profile,
+                photos: {
+                    ...state.profile.photos,
+                    ...action.photos
+                }
+            }
+        }
         default:
             return state
     }
@@ -57,12 +90,14 @@ export const addPostAC = (postMessage: string): AddPostACType=> {
 export const deletePostAC = (id: number)=> {
     return {type: 'DELETE-POST', id} as const
 }
-
 export const setUserProfile = (profile: ProfileType): SetUserProfileACType => {
     return{type: SET_USER_PROFILE, profile}as const
 }
 export const setStatus = (status: string): SetStatusACType => {
     return{type: SET_STATUS, status}as const
+}
+export const changeAvatar = (photos: PhotosType): ChangeAvatarACType => {
+    return {type: UPDATE_PHOTO, photos} as const
 }
 //thunks
 export const getUserProfile = (userId: string): AppThunkType => {
@@ -89,6 +124,15 @@ export const updateStatus = (status: string): AppThunkType => {
         })
     }
 }
+export const changePhotoTC = (photo: File): AppThunkType => {
+    return (dispatch) => {
+        profileAPI.updatePhoto(photo).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(changeAvatar(response.data.data.photos))
+            }
+        })
+    }
+}
 //types
 export type PostType = {
     id?: number
@@ -109,26 +153,34 @@ type SetStatusACType ={
     type: typeof SET_STATUS
     status: string
 }
+type ChangeAvatarACType = {
+    type: typeof UPDATE_PHOTO
+    photos: PhotosType
+}
 export type ProfileType ={
-    aboutMe: string | null,
+    aboutMe: string
     contacts: {
-        facebook: string | null
-        github: string | null
-        instagram: string | null
-        mainLink: string | null
-        twitter: string | null
-        vk: string | null
-        website: string | null
-        youtube: string | null
+        facebook: string
+        github: string
+        instagram: string
+        mainLink: string
+        twitter: string
+        vk: string
+        website: string
+        youtube: string
     },
-    fullName: string | null,
-    lookingForAJob: boolean | null,
-    lookingForAJobDescription: string | null,
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
     photos: {
-        large: string | undefined,
-        small: string | undefined
+        large: string
+        small: string
     },
-    userId: number | null
+    userId: number
+}
+type PhotosType = {
+    large: string
+    small: string
 }
 
 export default profileReducer

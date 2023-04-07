@@ -19,7 +19,7 @@ const Header = (props: HeaderPropsType) => {
     }
     return (
         <header className={s.headerContainer}>
-            <div className={s.header}>
+            {/*<div className={s.header}>*/}
                 <div className={s.title}>
                     <Diversity3Icon sx={{color: 'ghostwhite'}}/>
                     <span className={s.name}>SOCIAL NETWORK</span>
@@ -38,7 +38,7 @@ const Header = (props: HeaderPropsType) => {
                         </div>
                         : <NavLink className={(isActive) => isActive ? s.active : s.link} to={'/login'}>Login</NavLink>}
                 </div>
-            </div>
+            {/*</div>*/}
         </header>
     )
 }

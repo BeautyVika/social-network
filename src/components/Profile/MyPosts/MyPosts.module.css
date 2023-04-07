@@ -1,5 +1,14 @@
 .postsBlock {
     padding: 10px;
+    margin: 20px 15px 0;
+    display: flex;
+    width: 40%;
+}
+h3 {
+    margin: 15px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #CA9CE1;
 }
 .posts {
     margin-top: 10px;

@@ -2,6 +2,7 @@ import React, {HTMLInputTypeAttribute} from 'react';
 import {WrappedFieldInputProps} from "redux-form";
 import {WrappedFieldMetaProps} from "redux-form/lib/Field";
 import s from './FormsControls.module.css'
+import TextField from "@mui/material/TextField/TextField";
 
 type FormsControlsType = {
     input: WrappedFieldInputProps
@@ -22,6 +23,13 @@ const FormControl = ({input, meta, ...props}: FormsControlsType) => {
             {hasError && <span>{meta.error}</span>}
         </div>
     )
+}
+
+export const TextAreA = ({input, meta, placeholder, ...props}: FormsControlsType) => {
+    return <TextField {...input}
+                      color='secondary'
+                      fullWidth
+                      label={placeholder}/>
 }
 
 export const Textarea = ({input, meta, ...props}: FormsControlsType) => {

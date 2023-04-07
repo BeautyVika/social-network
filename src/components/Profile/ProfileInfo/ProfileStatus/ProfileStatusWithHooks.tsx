@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
+import {TextField} from "@mui/material";
 
 type ProfileStatusPropsType = {
     status: string
@@ -27,15 +28,29 @@ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
 
         return (
             <div style={{display: 'flex', flexDirection: 'row'}}>
-                <span>Status___</span>
+                <span style={{fontSize: '18px', fontWeight: '700', color: '#CA9CE1'}}>Status ---</span>
                 {!editMode &&
                     <div>
-                        <span onDoubleClick={activateEditMode}>{props.status || 'No status'}</span>
+                        <span style={{
+                            fontSize: '18px',
+                            fontStyle: 'italic',
+                            minWidth: '100px',
+                            minHeight: '12px',
+                            cursor: 'pointer',
+                        }}
+                              onDoubleClick={activateEditMode}>
+                            {props.status || 'No status'}
+                        </span>
                     </div>
                 }
                 {editMode &&
                     <div>
-                        <input onChange={onStatusChange} onBlur={deactivateEditMode} value={status} autoFocus/>
+                        <TextField onChange={onStatusChange}
+                                   onBlur={deactivateEditMode}
+                                   value={status}
+                                   color='secondary'
+                                   variant="standard"
+                                   autoFocus/>
                     </div>
                 }
             </div>

@@ -1,17 +1,24 @@
-import React, {FC} from 'react'
+import React, {ChangeEvent, FC} from 'react'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { IconButton } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import defaultAvatar from "assets/img/defaultAvatar.svg"
-import s from "components/Profile/ProfileInfo/PersonalInfo/ProfileAvatar/ProfileAvatar.module.css"
+import s from "components/Profile/ProfileInfo/ProfileAvatar/ProfileAvatar.module.css"
 
 type ProfileAvatarPropsType = {
-    avatar: string | undefined
+    avatar: string
     withButton?: boolean
     size: number
+    changePhotoTC?: (photo: File) => void
 }
 
-const ProfileAvatar: FC<ProfileAvatarPropsType> = ({avatar, withButton, size}) => {
+const ProfileAvatar: FC<ProfileAvatarPropsType> = (
+    {avatar, withButton, size, changePhotoTC}) => {
+
+    const onChangePhoto = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files.length > 0)
+            changePhotoTC?.(event.target.files[0])
+    }
 
     return (
         <div className={s.container}>
@@ -26,7 +33,7 @@ const ProfileAvatar: FC<ProfileAvatarPropsType> = ({avatar, withButton, size}) =
                 <label>
                     <input
                         type="file"
-                        // onChange={e => uploadHandler(e, onChangeAvatar)}
+                        onChange={onChangePhoto}
                         style={{ display: 'none' }}
                         accept="image/png, image/jpeg, image/svg"
                     />
@@ -35,8 +42,8 @@ const ProfileAvatar: FC<ProfileAvatarPropsType> = ({avatar, withButton, size}) =
                         style={{
                             fontSize: '2.5rem',
                             position: 'absolute',
-                            bottom: '-82px',
-                            right: '111px',
+                            bottom: '-114px',
+                            right: '121px',
                             border: '1px solid #685F74',
                         }}
                     >

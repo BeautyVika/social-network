@@ -1,5 +1,5 @@
 import {AppStateType, AppThunkType} from "./reduxStore";
-import {authAPI} from "../api/api";
+import {authAPI} from "api/api";
 import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
 

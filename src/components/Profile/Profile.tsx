@@ -9,6 +9,7 @@ type ProfilePropsType = {
     posts: Array<PostType>
     status: string
     updateStatus: (status: string) => void
+    changePhotoTC: (photo: File) => void
 }
 
 const Profile = (props: ProfilePropsType) => {
@@ -21,7 +22,10 @@ const Profile = (props: ProfilePropsType) => {
             </div>
 
             <div className={s.profileContainer}>
-                <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileInfo profile={props.profile}
+                             changePhotoTC={props.changePhotoTC}
+                             status={props.status}
+                             updateStatus={props.updateStatus}/>
                 <MyPostsContainer/>
             </div>
         </div>
