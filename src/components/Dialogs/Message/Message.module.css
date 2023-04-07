@@ -1,0 +1,25 @@
+.messageContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    width: auto;
+    background-color:#685F74;
+}
+.messageContainer::before{
+    content: "";
+    bottom: 15px;
+    left:-10px;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 10px 10px;
+    border-color: transparent transparent #685F74 transparent;
+}
+.message {
+    padding-bottom: 13px;
+    color: #CA9CE1;
+}

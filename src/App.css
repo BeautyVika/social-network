@@ -23,4 +23,5 @@
 .app-wrapper-content {
     grid-area: c;
     background-color: #EAD5E6;
+    min-height: 100vh;
 }
