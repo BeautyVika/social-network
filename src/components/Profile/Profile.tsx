@@ -17,7 +17,7 @@ const Profile = (props: ProfilePropsType) => {
     return (
         <div>
             <div >
-                <img style={{ width: '101%', height:' 300px',objectFit: 'cover'}} alt='big content'
+                <img style={{ width: '101%', height:' 300px',objectFit: 'cover', borderRadius: '0%'}} alt='big content'
                      src='https://wallpapershome.ru/images/pages/pic_h/182.jpg'/>
             </div>
 

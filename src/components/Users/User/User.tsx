@@ -1,8 +1,8 @@
-import React from 'react';
-import s from "../Users.module.css";
-import userPhoto from "../../../assets/img/user.webp";
-import {UsersType} from "../../../redux/UsersReducer";
-import {NavLink} from "react-router-dom";
+import React from 'react'
+import s from "./User.module.css"
+import userPhoto from "../../../assets/img/user.webp"
+import {UsersType} from "redux/UsersReducer"
+import {NavLink} from "react-router-dom"
 
 type UserPropsType = {
     user: UsersType
@@ -14,8 +14,8 @@ type UserPropsType = {
 const User = (props: UserPropsType) => {
     let user = props.user
     return (
-        <div>
-            <span>
+        <div className={s.userContainer}>
+                 <span>
                 <div>
                     <NavLink to={'/profile/' + user.id}>
                         <img className={s.userPhoto} src={user.photos.small != null ? user.photos.small : userPhoto}
@@ -36,16 +36,10 @@ const User = (props: UserPropsType) => {
                 </div>
             </span>
 
-            <span>
-                <span>
-                    <div>{user.name}</div>
-                    <div>{user.status}</div>
-                </span>
-                <span>
-                    <div>{'user.location.country'}</div>
-                    <div>{'user.location.city'}</div>
-                </span>
-            </span>
+            <div className={s.userInfo}>
+                <div className={s.nameUser}> Name: {user.name}</div>
+                <div className={s.statusUser}> Status: {user.status}</div>
+            </div>
 
         </div>
     )

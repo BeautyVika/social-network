@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import {AppStateType} from "../../redux/reduxStore";
+import React, {Component} from 'react'
+import {connect} from "react-redux"
+import {AppStateType} from "redux/reduxStore"
 import {
     setCurrentPage,
     requestUsers, follow, unfollow, UsersType,
-} from "../../redux/UsersReducer";
-import Users from "./Users";
-import Preloader from "../Common/Preloader/Preloader";
-import {compose} from "redux";
+} from "redux/UsersReducer"
+import Users from "./Users"
+import Preloader from "../Common/Preloader/Preloader"
+import {compose} from "redux"
 import {
     getUsers,
     getPageSize,
@@ -15,8 +15,7 @@ import {
     currentPage,
     isFetching,
     followingInProgress
-} from "../../redux/UsersSelectors";
-
+} from "redux/selectors/UsersSelectors"
 
 export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
 
@@ -63,7 +62,6 @@ class UsersContainer extends Component <UsersPropsType> {
         </>
     }
 }
-
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {

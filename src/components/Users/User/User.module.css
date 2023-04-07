@@ -1,0 +1,29 @@
+.userContainer {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    background: ghostwhite;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0, .2);
+    justify-content: space-between;
+    font-size: 14px;
+}
+.userPhoto {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+.userInfo {
+    padding: 20px;
+}
+.nameUser {
+    color: #685F74;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.statusUser {
+    color: #685F74;
+    font-size: 15px;
+    font-weight: 500;
+}

@@ -2,7 +2,7 @@ import React, {ChangeEvent, FC} from 'react'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { IconButton } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
-import defaultAvatar from "assets/img/defaultAvatar.svg"
+import defaultAvatar from "assets/img/user.webp"
 import s from "components/Profile/ProfileInfo/ProfileAvatar/ProfileAvatar.module.css"
 
 type ProfileAvatarPropsType = {

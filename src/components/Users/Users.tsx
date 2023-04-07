@@ -1,7 +1,8 @@
-import React from 'react';
-import {UsersType} from "../../redux/UsersReducer";
-import Paginator from "../Common/Paginator/Paginator";
-import User from "./User/User";
+import React from 'react'
+import {UsersType} from "redux/UsersReducer"
+import Paginator from "../Common/Paginator/Paginator"
+import User from "./User/User"
+import s from "./Users.module.css"
 
 type UsersPropsType = {
     users: Array<UsersType>
@@ -17,16 +18,19 @@ type UsersPropsType = {
 const Users = (props: UsersPropsType) => {
 
     return (
-        <div>
+        <div className={s.usersContainer}>
             <Paginator totalUsersCount={props.totalUsersCount}
                        currentPage={props.currentPage}
                        pageSize={props.pageSize}
                        onPageChanged={props.onPageChanged}/>
-            {props.users.map(u => <User key={u.id}
-                                        user={u}
-                                        follow={props.follow}
-                                        followingInProgress={props.followingInProgress}
-                                        unfollow={props.unfollow}/>)}
+
+            <div className={s.user}>
+                {props.users.map(u => <User key={u.id}
+                                            user={u}
+                                            follow={props.follow}
+                                            followingInProgress={props.followingInProgress}
+                                            unfollow={props.unfollow}/>)}
+            </div>
         </div>
     )
 }

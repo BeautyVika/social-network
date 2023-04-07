@@ -1,17 +1,18 @@
-import {usersAPI} from "../api/api";
-import {AppThunkType} from "./reduxStore";
+import {usersAPI} from "api/api"
+import {AppThunkType} from "./reduxStore"
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+const SET_PAGE_SIZE = 'SET-PAGE-SIZE'
 const SET_USERS_TOTAL_COUNT = 'SET-USERS-TOTAL-COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS'
 
 let initialState = {
     users: [] as Array<UsersType>,
-    pageSize: 20,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -34,6 +35,8 @@ let initialState = {
             return {...state, users: action.users}
         case SET_CURRENT_PAGE:
             return {...state, currentPage: action.pageNumber}
+        case SET_PAGE_SIZE:
+            return {...state, pageSize: action.pageSize}
         case SET_USERS_TOTAL_COUNT:
             return {...state, totalUsersCount: action.totalCount}
         case TOGGLE_IS_FETCHING:
@@ -62,6 +65,9 @@ export const setUsers = (users: Array<UsersType>) : SetUsersACType => {
 }
 export const setCurrentPage = (pageNumber: number): SetCurrentPageACType => {
     return{type: SET_CURRENT_PAGE, pageNumber}as const
+}
+export const SetPageSizeAC = (pageSize: number): SetPageSizeACType => {
+    return {type: SET_PAGE_SIZE, pageSize} as const
 }
 export const setTotalUsersCount = (totalUsersCount: number) : SetTotalUsersCountACType => {
     return {type: SET_USERS_TOTAL_COUNT, totalCount: totalUsersCount}as const
@@ -111,7 +117,7 @@ export const unfollow = (id: number): AppThunkType => {
 //types
 export type UsersReducerType = typeof initialState
 export type UsersActionsType = ToggleIsFetchingACType | SetCurrentPageACType | SetUsersACType | UnfollowACType | FollowACType
-    | SetTotalUsersCountACType | ToggleFollowingProgressType
+    | SetTotalUsersCountACType | ToggleFollowingProgressType | SetPageSizeACType
 
 export type UsersType = {
     id: number
@@ -137,6 +143,10 @@ type SetUsersACType = {
 type SetCurrentPageACType = {
     type: typeof SET_CURRENT_PAGE
     pageNumber:number
+}
+ type SetPageSizeACType = {
+    type: typeof SET_PAGE_SIZE
+    pageSize: number
 }
 type SetTotalUsersCountACType = {
     type: typeof SET_USERS_TOTAL_COUNT

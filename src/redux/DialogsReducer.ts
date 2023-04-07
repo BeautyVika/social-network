@@ -10,12 +10,12 @@ let initialState = {
         {id: 6, name: 'Anastasia'}
     ] as Array<DialogType>,
     messages: [
-        {id: 1, message: 'Hi'},
+        {id: 1, message: 'Hello'},
         {id: 2, message: 'How is your education?'},
-        {id: 3, message: 'Yo'},
+        {id: 3, message: 'Fine'},
         {id: 4, message: 'Yo'},
         {id: 5, message: 'Yo'},
-        {id: 6, message: ''}
+        {id: 6, message: 'Hi'}
     ] as Array<MessageType>,
 }
  const dialogsReducer = (state = initialState, action: DialogsActionType) : DialogReducerType => {

@@ -1,4 +1,4 @@
-import profileReducer, {addPostAC, deletePostAC, ProfileReducerType} from "./ProfileReducer";
+import profileReducer, {addPostAC, deletePostAC, ProfileReducerType} from "redux/ProfileReducer";
 
 let startState: ProfileReducerType
 beforeEach(() => {
