@@ -4,6 +4,7 @@ import {login} from "redux/AuthReducer"
 import {Redirect} from "react-router-dom"
 import {AppStateType} from "redux/reduxStore"
 import {FormDataType, LoginReduxForm} from "components/Login/LoginForm/LoginForm"
+import FormLabel from "@mui/material/FormLabel"
 import s from "./Login.module.css"
 
 type LoginPropsType = {
@@ -22,6 +23,18 @@ const Login = (props: LoginPropsType) => {
     return (
         <div className={s.loginContainer}>
             <h1 className={s.title}>Login</h1>
+            <FormLabel>
+                <p>To log in get registered
+                    <a href={'https://social-network.samuraijs.com/'}
+                       style={{color: '#CA9CE1', textDecoration: 'underline'}}
+                       target={'_blank'}> here
+                    </a>
+                </p>
+                <p>or use common test account credentials:</p>
+                <p>Email: free@samuraijs.com</p>
+                <p>Password: free</p>
+            </FormLabel>
+
             <div className={s.loginForm}>
                 <LoginReduxForm onSubmit={onSubmit}/>
             </div>
