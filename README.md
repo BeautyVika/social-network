@@ -1,6 +1,6 @@
+This project is based on materials from the YouTube channel IT-KAMASUTRA 'Way of the Samurai'.
 
-
-В этом стартовом проекте установлены следующие библиотеки
+The following libraries are installed in this project:
 
 - **antd** 
 - **axios** 
