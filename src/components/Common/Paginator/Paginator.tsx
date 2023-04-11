@@ -10,11 +10,6 @@ type PaginatorPropsType = {
 
 const Paginator: FC<PaginatorPropsType> = ({currentPage, pageSize,totalUsersCount,onPageChanged}) => {
 
-    // let pagesCount = Math.ceil(props.totalUsersCount > 50 ? 900 : props.totalUsersCount) / props.pageSize
-    // let pages: Array<number> = []
-    // for (let i = 1; i <= pagesCount; i++) {
-    //     pages = [...pages, i]
-    // }
     const [rowsPerPage, setRowsPerPage] = React.useState(pageSize)
 
     useEffect(() => {
@@ -41,16 +36,6 @@ const Paginator: FC<PaginatorPropsType> = ({currentPage, pageSize,totalUsersCoun
                             showLastButton
                             onRowsPerPageChange={handleChangeRowsPerPage}
                             onPageChange={handleChangePage}/>
-
-    // return <div>
-    //     {pages.map((page) => {
-    //         return <span className={props.currentPage === page ? s.selectedPage : ''}
-    //                      key={page}
-    //                      onClick={(e) => props.onPageChanged(page)}>
-    //                    {page}{' '}
-    //                </span>
-    //     })}
-    // </div>
 }
 
 export default Paginator
