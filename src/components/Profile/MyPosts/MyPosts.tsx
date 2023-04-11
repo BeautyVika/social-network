@@ -1,18 +1,24 @@
 import React, {memo} from 'react'
 import s from './MyPosts.module.css'
-import Post from './Post/MyPost'
+import MyPost from './Post/MyPost'
 import {MyPostsPropsType} from "./MyPostsContainer"
 import Paper from '@mui/material/Paper'
-import {AddNewPostFormRedux} from "components/Profile/MyPosts/AddNewPostForm/AddNewPostForm";
+import {AddNewPostFormRedux} from "components/Profile/MyPosts/AddNewPostForm/AddNewPostForm"
 
- export type MyPostFormType = {
+export type MyPostFormType = {
     newPostText: string
+    addLikes: (likes: number, id: string) => void
 }
 
 const MyPosts = memo((props: MyPostsPropsType) => {
 
     let postsElement = props.profilePage.posts.map(p =>
-        <Post avatar={props.profilePage.profile.photos.large} key={p.id} message={p.message} likesCount={p.likesCount}/>)
+        <MyPost avatar={props.profilePage.profile.photos.large}
+                key={p.id}
+                id={p.id}
+                addLikes={props.addLikes}
+                message={p.message}
+                likesCount={p.likesCount}/>)
 
     let onAddPost = (values: MyPostFormType) => {
         props.addPost(values.newPostText)

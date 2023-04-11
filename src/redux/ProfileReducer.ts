@@ -1,16 +1,19 @@
-import {AppThunkType} from "./reduxStore";
-import {profileAPI, usersAPI} from "api/api";
+import {AppThunkType} from "./reduxStore"
+import {profileAPI, usersAPI} from "api/api"
+import {v1} from "uuid"
 
 const ADD_POST = "ADD-POST"
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
 const UPDATE_PHOTO = 'UPDATE-PHOTO'
+const DELETE_POST = 'DELETE-POST'
+const ADD_LIKES = 'ADD-LIKES'
 
 let initialState: ProfileReducerType = {
     posts: [
-        {id: 1, message: 'Hi, how are you?', likesCount: 12},
-        {id: 2, message: 'It\'s my first post', likesCount: 15},
-        {id: 3, message: 'I\'m ok', likesCount: 10}
+        {id: v1(), message: 'Hi, how are you?', likesCount: 12},
+        {id: v1(), message: 'It\'s my first post', likesCount: 15},
+        {id: v1(), message: 'I\'m ok', likesCount: 10}
     ],
     profile: {
         aboutMe: '',
@@ -41,13 +44,13 @@ export type ProfileReducerType = {
     status: string
 }
 export type ProfileActionsType = AddPostACType | SetUserProfileACType
-    | SetStatusACType | DeletePostActionType | ChangeAvatarACType
+    | SetStatusACType | DeletePostACType | ChangeAvatarACType | AddLikesACType
 
 const profileReducer = (state = initialState, action: ProfileActionsType):  ProfileReducerType => {
     switch (action.type) {
         case ADD_POST:
             const newPost: PostType = {
-                id: 5,
+                id: v1(),
                 message: action.postMessage,
                 likesCount: 0
             }
@@ -55,7 +58,7 @@ const profileReducer = (state = initialState, action: ProfileActionsType):  Prof
                 ...state,
                 posts: [...state.posts, newPost]
             }
-        case 'DELETE-POST':
+        case DELETE_POST:
             return {
                 ...state,
                 posts: state.posts.filter((p) => p.id !== action.id)
@@ -75,20 +78,19 @@ const profileReducer = (state = initialState, action: ProfileActionsType):  Prof
                 }
             }
         }
+        case ADD_LIKES:
+            return {...state, posts: state.posts.map(el => el.id === action.id ? {...el, likesCount: action.likes} : el)}
+
         default:
             return state
     }
 }
 //actions
 export const addPostAC = (postMessage: string): AddPostACType=> {
-    return {
-        type: ADD_POST,
-        postMessage
-    } as const
+    return {type: ADD_POST, postMessage} as const
 }
-
-export const deletePostAC = (id: number)=> {
-    return {type: 'DELETE-POST', id} as const
+export const deletePostAC = (id: string)=> {
+    return {type: DELETE_POST, id} as const
 }
 export const setUserProfile = (profile: ProfileType): SetUserProfileACType => {
     return{type: SET_USER_PROFILE, profile}as const
@@ -98,6 +100,9 @@ export const setStatus = (status: string): SetStatusACType => {
 }
 export const changeAvatar = (photos: PhotosType): ChangeAvatarACType => {
     return {type: UPDATE_PHOTO, photos} as const
+}
+export const addLikes = (likes: number, id: string): AddLikesACType => {
+    return {type: ADD_LIKES,id, likes} as const
 }
 //thunks
 export const getUserProfile = (userId: string): AppThunkType => {
@@ -135,11 +140,11 @@ export const changePhotoTC = (photo: File): AppThunkType => {
 }
 //types
 export type PostType = {
-    id?: number
+    id: string
     message: string
     likesCount: number
 }
-export type DeletePostActionType = ReturnType<typeof deletePostAC>
+export type DeletePostACType = ReturnType<typeof deletePostAC>
 
 type AddPostACType = {
     type: typeof ADD_POST
@@ -156,6 +161,11 @@ type SetStatusACType ={
 type ChangeAvatarACType = {
     type: typeof UPDATE_PHOTO
     photos: PhotosType
+}
+type AddLikesACType = {
+    type: typeof ADD_LIKES
+    likes: number
+    id: string
 }
 export type ProfileType ={
     aboutMe: string
