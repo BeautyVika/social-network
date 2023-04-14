@@ -1,8 +1,8 @@
-import React, {memo} from 'react'
-import s from './MyPosts.module.css'
-import MyPost from './Post/MyPost'
+import React, {memo} from "react"
+import s from "./MyPosts.module.css"
+import MyPost from "./Post/MyPost"
 import {MyPostsPropsType} from "./MyPostsContainer"
-import Paper from '@mui/material/Paper'
+import Paper from "@mui/material/Paper"
 import {AddNewPostFormRedux} from "components/Profile/MyPosts/AddNewPostForm/AddNewPostForm"
 
 export type MyPostFormType = {

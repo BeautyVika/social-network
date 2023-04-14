@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {MessageType} from "redux/DialogsReducer"
 import s from "./Message.module.css"
 

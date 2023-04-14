@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC} from "react"
 import {ProfileType} from "redux/ProfileReducer"
 import Contact from "components/Profile/ProfileInfo/ProfileData/Contact/Contact"
 import s from "./ProfileData.module.css"

@@ -1,5 +1,5 @@
-import {getAuthUserData} from "./AuthReducer";
-import {AppThunkType} from "./reduxStore";
+import {getAuthUserData} from "./AuthReducer"
+import {AppThunkType} from "./reduxStore"
 
 const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS'
 

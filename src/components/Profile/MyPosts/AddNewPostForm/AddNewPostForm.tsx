@@ -3,7 +3,7 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form"
 import {Textarea} from "components/Common/FormsControls/FormsControls"
 import {maxLengthCreator, required} from "utils/validators/validators"
 import {MyPostFormType} from "components/Profile/MyPosts/MyPosts"
-import s from './AddNewPostForm.module.css'
+import s from "./AddNewPostForm.module.css"
 
 const maxLength60 = maxLengthCreator(60)
 

@@ -1,5 +1,5 @@
+import React from "react"
 import {maxLengthCreator, required} from "utils/validators/validators"
-import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form"
 import {Textarea} from "components/Common/FormsControls/FormsControls"
 import {NewMessageFormType} from "components/Dialogs/Dialogs"

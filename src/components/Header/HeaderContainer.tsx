@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import Header from './Header'
-import {AppStateType} from "redux/reduxStore";
-import {logout} from "redux/AuthReducer";
-import {connect} from "react-redux";
+import React, {Component} from "react"
+import Header from "./Header"
+import {AppStateType} from "redux/reduxStore"
+import {logout} from "redux/AuthReducer"
+import {connect} from "react-redux"
 
 type HeaderContainerPropsType = MapStatePropsType & MapDispatchPropsType
 

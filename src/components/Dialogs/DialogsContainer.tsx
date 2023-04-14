@@ -1,10 +1,10 @@
-import React from 'react';
-import {DialogReducerType, sendMessageAC} from "redux/DialogsReducer";
-import Dialogs from "./Dialogs";
-import {connect} from "react-redux";
-import {AppStateType} from "redux/reduxStore";
-import {compose, Dispatch} from "redux";
-import {withAuthRedirect} from "hoc/WithAuthRedirect";
+import React from "react"
+import {DialogReducerType, sendMessageAC} from "redux/DialogsReducer"
+import Dialogs from "./Dialogs"
+import {connect} from "react-redux"
+import {AppStateType} from "redux/reduxStore"
+import {compose, Dispatch} from "redux"
+import {withAuthRedirect} from "hoc/WithAuthRedirect"
 
 export type DialogsPagePropsType = MapStatePropsType & MapDispatchPropsType
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {UsersType} from "redux/UsersReducer"
 import Paginator from "../Common/Paginator/Paginator"
 import User from "./User/User"

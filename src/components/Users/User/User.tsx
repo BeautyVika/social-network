@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import s from "./User.module.css"
 import userPhoto from "../../../assets/img/user.webp"
 import {UsersType} from "redux/UsersReducer"

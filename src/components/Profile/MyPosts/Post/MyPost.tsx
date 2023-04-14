@@ -1,6 +1,6 @@
-import React from 'react';
-import s from './MyPost.module.css'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import React from "react"
+import s from "./MyPost.module.css"
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import defaultImg from "../../../../assets/img/user.webp"
 import IconButton from "@mui/material/IconButton"
 
