@@ -23,11 +23,7 @@ export const usersAPI = {
         return instance.delete(`follow/${id}`).then(response => {
             return response.data
         })
-    },
-    // getProfile(id: string){
-    //     console.warn('Obsolete method. Please profileAPI object')
-    //     return profileAPI.getProfile(id)
-    // }
+    }
 }
 export const profileAPI = {
     getProfile(id: number){
@@ -56,10 +52,15 @@ export const authAPI = {
     me() {
        return instance.get(`auth/me`)
     },
-    login(email: string, password: string, rememberMe= false) {
-        return instance.post('auth/login', {email, password, rememberMe})
+    login(email: string, password: string, rememberMe= false, captcha: string | null = null) {
+        return instance.post('auth/login', {email, password, rememberMe, captcha})
     },
     logout() {
         return instance.delete('auth/login')
+    }
+}
+export const securityAPI = {
+    getCaptcha(){
+        return instance.get('security/get-captcha-url')
     }
 }

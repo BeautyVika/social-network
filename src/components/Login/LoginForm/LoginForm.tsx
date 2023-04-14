@@ -8,9 +8,13 @@ export type LoginFormDataType = {
     email: string
     password: string
     rememberMe: boolean
+    captcha: string
+}
+type LoginFormType = {
+    captchaURL: null | string
 }
 
-export const LoginForm: FC<InjectedFormProps<LoginFormDataType>> = (props) => {
+export const LoginForm: FC<LoginFormType & InjectedFormProps<LoginFormDataType, LoginFormType>> = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
@@ -25,12 +29,24 @@ export const LoginForm: FC<InjectedFormProps<LoginFormDataType>> = (props) => {
             <div className={s.remember}>
                 <Field type='checkbox' name={'rememberMe'} component={CheckBox}/>
                 <span>remember me</span>
-
-                {props.error && <div className={s.formError}>{props.error}</div>}
             </div>
+
+            {props.error && <div className={s.formError}>{props.error}</div>}
+
+            {props.captchaURL &&
+                <>
+                    <img src={props.captchaURL} alt='captcha'/>
+                    <div>
+                        <Field placeholder='Captcha'
+                               type='text'
+                               name='captcha'
+                               component={Textarea}
+                               validate={[required]}/>
+                    </div>
+                </>}
 
             <button>Send</button>
         </form>)
 }
 
-export const LoginReduxForm = reduxForm<LoginFormDataType>({form: 'login'})(LoginForm)
+export const LoginReduxForm = reduxForm<LoginFormDataType, LoginFormType>({form: 'login'})(LoginForm)

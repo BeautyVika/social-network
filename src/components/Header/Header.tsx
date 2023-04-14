@@ -33,7 +33,6 @@ const Header = (props: HeaderPropsType) => {
                             <IconButton onClick={logOutHandler}>
                                 <ExitToAppIcon sx={{color: 'ghostwhite'}}/>
                             </IconButton>
-                            {/*<button onClick={props.logout}>Log out</button>*/}
                         </div>
                         : <NavLink className={(isActive) => isActive ? s.active : s.link} to={'/login'}>Login</NavLink>}
                 </div>
