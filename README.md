@@ -1,5 +1,7 @@
 This project is based on materials from the YouTube channel IT-KAMASUTRA 'Way of the Samurai'.
 
+demo: https://beautyvika.github.io/social-network/
+
 The following libraries are installed in this project:
 
 - **antd** 
