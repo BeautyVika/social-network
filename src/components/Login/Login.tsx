@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {login} from "redux/AuthReducer"
 import {Redirect} from "react-router-dom"
 import {AppStateType} from "redux/reduxStore"
-import {FormDataType, LoginReduxForm} from "components/Login/LoginForm/LoginForm"
+import {LoginFormDataType, LoginReduxForm} from "components/Login/LoginForm/LoginForm"
 import FormLabel from "@mui/material/FormLabel"
 import s from "./Login.module.css"
 
@@ -14,7 +14,7 @@ type LoginPropsType = {
 
 const Login = (props: LoginPropsType) => {
 
-    const onSubmit = (formData: FormDataType) => {
+    const onSubmit = (formData: LoginFormDataType) => {
         props.login(formData.email, formData.password, formData.rememberMe)
     }
     if (props.isAuth) {

@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios from "axios"
+import {UpdateUserType} from "redux/ProfileReducer"
+
 
 const instance = axios.create({
     withCredentials: true,
@@ -22,13 +24,13 @@ export const usersAPI = {
             return response.data
         })
     },
-    getProfile(id: string){
-        console.warn('Obsolete method. Please profileAPI object')
-        return profileAPI.getProfile(id)
-    }
+    // getProfile(id: string){
+    //     console.warn('Obsolete method. Please profileAPI object')
+    //     return profileAPI.getProfile(id)
+    // }
 }
 export const profileAPI = {
-    getProfile(id: string){
+    getProfile(id: number){
         return instance.get(`profile/${id}`)
     },
     getStatus(id: string) {
@@ -46,6 +48,9 @@ export const profileAPI = {
             }
         })
     },
+    updateProfile(profile: UpdateUserType) {
+        return instance.put('profile', profile)
+    }
 }
 export const authAPI = {
     me() {

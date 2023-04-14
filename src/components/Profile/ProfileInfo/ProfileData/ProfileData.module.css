@@ -1,0 +1,25 @@
+.profileData {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    word-break: break-word;
+}
+.form {
+    margin-top: 10px;
+    width: 80%;
+}
+.error {
+    color: #f34545;
+    margin: 10px 5px;
+    font-size: 12px;
+}
+.btnGroup {
+    display: flex;
+    justify-content: center;
+}
+.btnCancel {
+    background-color: ghostwhite;
+    color: #CA9CE1;
+}

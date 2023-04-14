@@ -7,9 +7,9 @@ const SET_USER_DATA = "auth/SET-USER-DATA"
 const SET_IS_AUTH = "SET-IS-AUTH"
 
 let initialState = {
-    userId: 0,
-    email: '',
-    login: '',
+    userId: null,
+    email: null,
+    login: null,
     isAuth: false
 }
 const AuthReducer = (state: AuthType = initialState, action: AuthActionsType): AuthType => {

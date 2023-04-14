@@ -1,7 +1,7 @@
-import React, {HTMLInputTypeAttribute} from 'react'
+import React, {HTMLInputTypeAttribute} from "react"
 import {WrappedFieldInputProps} from "redux-form"
 import {WrappedFieldMetaProps} from "redux-form/lib/Field"
-import s from './FormsControls.module.css'
+import s from "./FormsControls.module.css"
 import TextField from "@mui/material/TextField/TextField"
 import Checkbox from "@mui/material/Checkbox"
 
@@ -32,7 +32,8 @@ export const Textarea = ({input, meta: {touched, error}, placeholder, ...props}:
                       fullWidth
                       error={touched && error}
                       helperText={touched && error}
-                      label={placeholder}/>
+                      label={placeholder}
+                      style={{marginBottom: '10px'}}/>
 }
 export const CheckBox = ({input, meta, ...props}: FormsControlsType) => {
     return <Checkbox {...input}

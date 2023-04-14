@@ -1,5 +1,5 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
-import {TextField} from "@mui/material";
+import React, {ChangeEvent, useEffect, useState} from "react"
+import {TextField} from "@mui/material"
 
 type ProfileStatusPropsType = {
     status: string
@@ -11,7 +11,7 @@ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
     let [editMode, setEditeMode] = useState<boolean>(false)
     let [status, setStatus] = useState<string>(props.status)
 
-    useEffect(()=> {
+    useEffect(() => {
         setStatus(props.status)
     }, [props.status])
 
@@ -22,39 +22,38 @@ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
         setEditeMode(false)
         props.updateStatus(status)
     }
-    const onStatusChange =(e: ChangeEvent<HTMLInputElement>) => {
-            setStatus(e.currentTarget.value)
+    const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setStatus(e.currentTarget.value)
     }
 
-        return (
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-                <span style={{fontSize: '18px', fontWeight: '700', color: '#CA9CE1'}}>Status ---</span>
-                {!editMode &&
-                    <div>
-                        <span style={{
-                            fontSize: '18px',
-                            fontStyle: 'italic',
-                            minWidth: '100px',
-                            minHeight: '12px',
-                            cursor: 'pointer',
-                        }}
-                              onDoubleClick={activateEditMode}>
+    return (
+        <div style={{
+            height: 'max-content',
+            fontWeight: 'bold',
+            width: '100%',
+            wordBreak: 'break-word',
+        }}>
+            Status:
+            {editMode
+                ? <TextField onChange={onStatusChange}
+                             onBlur={deactivateEditMode}
+                             value={status}
+                             color='secondary'
+                             variant="standard"
+                             autoFocus/>
+                : <span style={{
+                    fontStyle: 'italic',
+                    minWidth: '100px',
+                    minHeight: '12px',
+                    cursor: 'pointer',
+                    fontWeight: 'normal'
+                }}
+                        onDoubleClick={activateEditMode}>
                             {props.status || 'No status'}
-                        </span>
-                    </div>
-                }
-                {editMode &&
-                    <div>
-                        <TextField onChange={onStatusChange}
-                                   onBlur={deactivateEditMode}
-                                   value={status}
-                                   color='secondary'
-                                   variant="standard"
-                                   autoFocus/>
-                    </div>
-                }
-            </div>
-        )
+                </span>
+            }
+        </div>
+    )
 }
 
 export default ProfileStatusWithHooks

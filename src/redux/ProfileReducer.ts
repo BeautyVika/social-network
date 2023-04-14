@@ -1,6 +1,7 @@
 import {AppThunkType} from "./reduxStore"
-import {profileAPI, usersAPI} from "api/api"
+import {profileAPI} from "api/api"
 import {v1} from "uuid"
+import {stopSubmit} from "redux-form"
 
 const ADD_POST = "ADD-POST"
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
@@ -105,10 +106,10 @@ export const addLikes = (likes: number, id: string): AddLikesACType => {
     return {type: ADD_LIKES,id, likes} as const
 }
 //thunks
-export const getUserProfile = (userId: string): AppThunkType => {
+export const getUserProfile = (userId: number): AppThunkType => {
 
     return (dispatch) => {
-        usersAPI.getProfile(userId).then(response => {
+        profileAPI.getProfile(userId).then(response => {
             dispatch(setUserProfile(response.data))
         })
     }
@@ -134,6 +135,18 @@ export const changePhotoTC = (photo: File): AppThunkType => {
         profileAPI.updatePhoto(photo).then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(changeAvatar(response.data.data.photos))
+            }
+        })
+    }
+}
+export const saveProfile = (profile: UpdateUserType): AppThunkType => {
+    return (dispatch) => {
+        profileAPI.updateProfile(profile).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(getUserProfile(profile.userId))
+            }else {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+                dispatch(stopSubmit('ProfileInfo', {_error: message}))
             }
         })
     }
@@ -191,6 +204,23 @@ export type ProfileType ={
 type PhotosType = {
     large: string
     small: string
+}
+export type UpdateUserType = {
+    userId: number
+    fullName: string
+    aboutMe: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    contacts: {
+        website: string | null
+        github: string | null
+        twitter: string | null
+        instagram: string | null
+        facebook: string | null
+        vk: string | null
+        youtube: string | null
+        mainLink: string | null
+    }
 }
 
 export default profileReducer

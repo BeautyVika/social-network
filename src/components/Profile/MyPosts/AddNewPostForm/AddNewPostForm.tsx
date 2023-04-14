@@ -5,7 +5,7 @@ import {maxLengthCreator, required} from "utils/validators/validators"
 import {MyPostFormType} from "components/Profile/MyPosts/MyPosts"
 import s from './AddNewPostForm.module.css'
 
-const maxLength10 = maxLengthCreator(10)
+const maxLength60 = maxLengthCreator(60)
 
 const AddNewPostForm: React.FC<InjectedFormProps<MyPostFormType>> = (props) => {
     return (
@@ -14,7 +14,7 @@ const AddNewPostForm: React.FC<InjectedFormProps<MyPostFormType>> = (props) => {
                 <Field component={Textarea}
                        // style={{width: '90%', border: '2px solid #CA9CE1'}}
                        name='newPostText'
-                       validate={[required, maxLength10]}
+                       validate={[required, maxLength60]}
                        placeholder='Post message'/>
             </div>
             <div>

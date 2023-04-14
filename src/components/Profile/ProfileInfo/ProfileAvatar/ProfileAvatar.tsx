@@ -7,13 +7,13 @@ import s from "components/Profile/ProfileInfo/ProfileAvatar/ProfileAvatar.module
 
 type ProfileAvatarPropsType = {
     avatar: string
-    withButton?: boolean
     size: number
     changePhotoTC?: (photo: File) => void
+    isOwner: boolean
 }
 
 const ProfileAvatar: FC<ProfileAvatarPropsType> = (
-    {avatar, withButton, size, changePhotoTC}) => {
+    {avatar, size, changePhotoTC, isOwner}) => {
 
     const onChangePhoto = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0)
@@ -28,7 +28,7 @@ const ProfileAvatar: FC<ProfileAvatarPropsType> = (
                     left: '120px'}}
                 alt="ava"
             />
-            {withButton && (
+            {isOwner && (
                 <label>
                     <input
                         type="file"
