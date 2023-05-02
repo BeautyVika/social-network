@@ -1,6 +1,6 @@
 import React, {lazy} from "react"
 import "./App.css"
-import {Route, withRouter} from "react-router-dom"
+import {Redirect, Route, Switch, withRouter} from "react-router-dom"
 import Settings from "./components/Settings/Settings"
 import Music from "./components/Music/Music"
 import News from "./components/News/News"
@@ -39,7 +39,9 @@ class App extends React.Component<AppContainerPropsType> {
         return (
             <div className='app-wrapper'>
                 <HeaderContainer/>
-                    <div className='app-wrapper-content'>
+                <div className='app-wrapper-content'>
+                    <Switch>
+                        <Route exact path='/' render={() =><Redirect to={'/login'}/>}/>
                         <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
                         <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
                         <Route path='/users' render={withSuspense(UsersContainer)}/>
@@ -47,13 +49,14 @@ class App extends React.Component<AppContainerPropsType> {
                         <Route path='/news' component={News}/>
                         <Route path='/music' component={Music}/>
                         <Route path='/settings' component={Settings}/>
-                        {/*<Route path='*' render={() => <div style={{*/}
-                        {/*    display: "flex",*/}
-                        {/*    alignItems: "flex-start",*/}
-                        {/*    width: "100%",*/}
-                        {/*    justifyContent: "center"*/}
-                        {/*}}><h1>404: PAGE NOT FOUND</h1></div>}/>*/}
-                    </div>
+                        <Route path='*' render={() => <div style={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            width: "100%",
+                            justifyContent: "center"
+                        }}><h1>404: PAGE NOT FOUND</h1></div>}/>
+                    </Switch>
+                </div>
             </div>
         )
     }

@@ -4,8 +4,8 @@ import {stopSubmit} from "redux-form"
 import {ThunkAction} from "redux-thunk"
 
 const SET_USER_DATA = "auth/SET-USER-DATA"
-const SET_IS_AUTH = "SET-IS-AUTH"
-const GET_CAPTCHA_SUCCESS = "GET-CAPTCHA-SUCCESS"
+const SET_IS_AUTH = "auth/SET-IS-AUTH"
+const GET_CAPTCHA_SUCCESS = "auth/GET-CAPTCHA-SUCCESS"
 
 let initialState = {
     userId: null,

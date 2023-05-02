@@ -3,12 +3,12 @@ import {profileAPI} from "api/api"
 import {v1} from "uuid"
 import {stopSubmit} from "redux-form"
 
-const ADD_POST = "ADD-POST"
-const SET_USER_PROFILE = 'SET-USER-PROFILE'
-const SET_STATUS = 'SET-STATUS'
-const UPDATE_PHOTO = 'UPDATE-PHOTO'
-const DELETE_POST = 'DELETE-POST'
-const ADD_LIKES = 'ADD-LIKES'
+const ADD_POST = "profile/ADD-POST"
+const SET_USER_PROFILE = 'profile/SET-USER-PROFILE'
+const SET_STATUS = 'profile/SET-STATUS'
+const UPDATE_PHOTO = 'profile/UPDATE-PHOTO'
+const DELETE_POST = 'profile/DELETE-POST'
+const ADD_LIKES = 'profile/ADD-LIKES'
 
 let initialState: ProfileReducerType = {
     posts: [

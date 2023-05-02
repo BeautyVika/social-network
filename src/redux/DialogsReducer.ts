@@ -1,4 +1,4 @@
-const SEND_MESSAGE = "SEND-MESSAGE"
+const SEND_MESSAGE = "dialogs/SEND-MESSAGE"
 
 let initialState = {
     dialogs: [
@@ -21,7 +21,7 @@ let initialState = {
  const dialogsReducer = (state = initialState, action: DialogsActionType) : DialogReducerType => {
 
      switch(action.type) {
-         case 'SEND-MESSAGE':
+         case SEND_MESSAGE:
              let body = action.newMessageBody
          return {...state, messages: [...state.messages, {id: 7, message: body}]}
          default:
