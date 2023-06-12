@@ -6,6 +6,7 @@ import {AppStateType} from "redux/reduxStore"
 import {LoginFormDataType, LoginReduxForm} from "components/Login/LoginForm/LoginForm"
 import FormLabel from "@mui/material/FormLabel"
 import s from "./Login.module.css"
+import {Particle} from "components/Login/LoginForm/Particle"
 
 type LoginPropsType = {
     login: (email: string, password: string, rememberMe: boolean, captcha?: string) => void
@@ -23,22 +24,23 @@ const Login = (props: LoginPropsType) => {
     }
     return (
         <div className={s.loginContainer}>
-            <h1 className={s.title}>Login</h1>
-            <FormLabel>
-                <p>To log in get registered
-                    <a href={'https://social-network.samuraijs.com/'}
-                       style={{color: '#CA9CE1', textDecoration: 'underline'}}
-                       target={'_blank'}> here
-                    </a>
-                </p>
-                <p>or use common test account credentials:</p>
-                <p>Email: free@samuraijs.com</p>
-                <p>Password: free</p>
-            </FormLabel>
-
-            <div className={s.loginForm}>
+           <Particle/>
+            <div className={s.login}>
+                <h1 className={s.title}>Login</h1>
+                <FormLabel>
+                    <p>To log in get registered
+                        <a href={'https://social-network.samuraijs.com/'}
+                           style={{color: '#CA9CE1', textDecoration: 'underline'}}
+                           target={'_blank'}> here
+                        </a>
+                    </p>
+                    <p>or use common test account credentials:</p>
+                    <p>Email: free@samuraijs.com</p>
+                    <p>Password: free</p>
+                </FormLabel>
                 <LoginReduxForm onSubmit={onSubmit} captchaURL={props.captchaURL}/>
             </div>
+
         </div>
     )
 }
