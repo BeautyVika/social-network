@@ -50,7 +50,7 @@ class App extends React.Component<AppContainerPropsType> {
                         <Route path='/news' component={News}/>
                         <Route path='/music' component={Music}/>
                         <Route path='/settings' component={Settings}/>
-                        <Route path='/chat' component={withSuspense(ChatPage)}/>
+                        {/*<Route path='/chat' component={withSuspense(ChatPage)}/>*/}
                         <Route path='*' render={() => <div style={{
                             display: "flex",
                             alignItems: "flex-start",
