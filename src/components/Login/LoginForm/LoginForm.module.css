@@ -1,21 +1,38 @@
+.loginForm {
+    margin-top: 30px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    background: ghostwhite;
+    padding: 20px;
+    width: 100%;
+}
 .field {
     padding: 10px;
 }
 .remember {
+    font-family: "Roboto", sans-serif;
     display: flex;
     align-items: center;
-    padding: 10px;
+    margin-bottom: 10px;
+    color: #685F74;
 }
 .formError {
     margin: 10px 5px;
     font-size: 16px;
-    color: crimson;
+    color: #d32f2f;
 }
-button {
-    margin: 10px 15px;
+.btn {
     background-color: #CA9CE1;
-    border: 2px solid #CA9CE1;
-    height: 40px;
-    width: 100px;
+    border: 3px solid #CA9CE1;
+    height: 43px;
+    width: 100%;
     color: ghostwhite;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    border-radius: 5px;
+}
+.btn:hover {
+    cursor: pointer;
+    background-color: #dbaff5;
+
 }

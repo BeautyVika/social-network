@@ -4,6 +4,7 @@ import s from "components/Header/Navigation/Navigation.module.css"
 import PersonIcon from "@mui/icons-material/Person"
 import MailOutlineIcon from "@mui/icons-material/MailOutline"
 import GroupIcon from "@mui/icons-material/Group"
+import ChatIcon from '@mui/icons-material/Chat'
 
 const Navigation = () => {
     return (
@@ -21,6 +22,11 @@ const Navigation = () => {
             <div className={s.item}>
                 <NavLink className={(isActive) => isActive ? s.active : s.link} to='/users'>
                     <GroupIcon/> Users
+                </NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink className={(isActive) => isActive ? s.active : s.link} to='/chat'>
+                    <ChatIcon/> Chat
                 </NavLink>
             </div>
         </nav>

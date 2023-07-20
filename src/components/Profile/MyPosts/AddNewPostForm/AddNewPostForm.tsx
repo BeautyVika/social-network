@@ -9,17 +9,16 @@ const maxLength60 = maxLengthCreator(60)
 
 const AddNewPostForm: React.FC<InjectedFormProps<MyPostFormType>> = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form className={s.form} onSubmit={props.handleSubmit}>
             <div className={s.field}>
                 <Field component={Textarea}
-                       // style={{width: '90%', border: '2px solid #CA9CE1'}}
                        name='newPostText'
                        validate={[required, maxLength60]}
                        placeholder='Post message'/>
             </div>
-            <div>
-                <button>Add post</button>
-            </div>
+
+            <button className={s.btnPost}>Add post</button>
+
         </form>
     )
 }

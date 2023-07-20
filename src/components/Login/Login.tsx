@@ -26,7 +26,8 @@ const Login = (props: LoginPropsType) => {
         <div className={s.loginContainer}>
            <Particle/>
             <div className={s.login}>
-                <h1 className={s.title}>Login</h1>
+                <h1 className={s.title}>Sign In</h1>
+
                 <FormLabel>
                     <p>To log in get registered
                         <a href={'https://social-network.samuraijs.com/'}

@@ -3,7 +3,6 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form"
 import {CheckBox, Textarea} from "components/Common/FormsControls/FormsControls"
 import {required} from "utils/validators/validators"
 import s from "./LoginForm.module.css"
-import style from "../Login.module.css"
 
 export type LoginFormDataType = {
     email: string
@@ -18,7 +17,7 @@ type LoginFormType = {
 export const LoginForm: FC<LoginFormType & InjectedFormProps<LoginFormDataType, LoginFormType>> = (props) => {
 
     return (
-        <form onSubmit={props.handleSubmit} className={style.loginForm}>
+        <form onSubmit={props.handleSubmit} className={s.loginForm}>
             <div className={s.field}>
                 <Field placeholder={'Email'} name={'email'} component={Textarea} validate={[required]}/>
             </div>
@@ -37,7 +36,7 @@ export const LoginForm: FC<LoginFormType & InjectedFormProps<LoginFormDataType, 
             {props.captchaURL &&
                 <>
                     <img src={props.captchaURL} alt='captcha'/>
-                    <div>
+                    <div className={s.field}>
                         <Field placeholder='Captcha'
                                type='text'
                                name='captcha'
@@ -46,7 +45,7 @@ export const LoginForm: FC<LoginFormType & InjectedFormProps<LoginFormDataType, 
                     </div>
                 </>}
 
-            <button>Send</button>
+            <button className={s.btn}>Sign in</button>
         </form>)
 }
 

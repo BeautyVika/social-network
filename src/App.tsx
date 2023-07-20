@@ -16,6 +16,7 @@ import {withSuspense} from "hoc/WithSuspense"
 const DialogsContainer = lazy(() => import("./components/Dialogs/DialogsContainer"))
 const UsersContainer = lazy(() => import("./components/Users/UsersContainer"))
 const ProfileContainer = lazy(() => import("./components/Profile/ProfileContainer"))
+const ChatPage = lazy(() => import("./pages/Chat/ChatPage"))
 
 type MapDispatchPropsType = {
     initializeApp: () => void
@@ -49,6 +50,7 @@ class App extends React.Component<AppContainerPropsType> {
                         <Route path='/news' component={News}/>
                         <Route path='/music' component={Music}/>
                         <Route path='/settings' component={Settings}/>
+                        <Route path='/chat' component={withSuspense(ChatPage)}/>
                         <Route path='*' render={() => <div style={{
                             display: "flex",
                             alignItems: "flex-start",

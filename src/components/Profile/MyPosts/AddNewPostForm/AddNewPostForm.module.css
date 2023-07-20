@@ -1,11 +1,20 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
 .field {
     margin: 0 15px;
 }
-button {
+.btnPost {
+    align-self: flex-end;
     margin: 10px 15px;
     background-color: #CA9CE1;
     border: 2px solid #CA9CE1;
     height: 40px;
-    width: 100px;
+    width: 20%;
     color: ghostwhite;
+    border-radius: 3px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
 }
