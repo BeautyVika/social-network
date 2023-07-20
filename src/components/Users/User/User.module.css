@@ -29,3 +29,15 @@
     font-size: 15px;
     font-weight: 500;
 }
+.btn{
+    margin: 10px 0px;
+    background-color: #CA9CE1;
+    border: 2px solid #CA9CE1;
+    height: 40px;
+    width: 100%;
+    color: ghostwhite;
+    border-radius: 3px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}

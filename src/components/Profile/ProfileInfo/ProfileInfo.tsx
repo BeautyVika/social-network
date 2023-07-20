@@ -1,5 +1,6 @@
 import React, {FC, useState} from "react"
 import s from "./ProfileInfo.module.css"
+import style from "../MyPosts/AddNewPostForm/AddNewPostForm.module.css"
 import {ProfileType, UpdateUserType} from "redux/ProfileReducer"
 import Preloader from "../../Common/Preloader/Preloader"
 import ProfileStatusWithHooks from "components/Profile/ProfileInfo/ProfileStatus/ProfileStatusWithHooks"
@@ -76,7 +77,7 @@ const ProfileInfo: FC<ProfileInfoProps> = ({profile,
 
                     </div>
 
-                    {isOwner && !editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
+                    {isOwner && !editMode && <button className={style.btnPost} onClick={() => setEditMode(true)}>Edit</button>}
                 </Paper>
         </div>
     )
