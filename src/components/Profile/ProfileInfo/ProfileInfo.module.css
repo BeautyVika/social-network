@@ -18,3 +18,16 @@
     color: #CA9CE1;
     align-self: center;
 }
+.btn{
+    align-self: center;
+    margin: 10px;
+    background-color: #CA9CE1;
+    border: 2px solid #CA9CE1;
+    height: 40px;
+    width: 50%;
+    color: ghostwhite;
+    border-radius: 3px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}

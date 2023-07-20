@@ -2,6 +2,7 @@
     margin: 20px 0;
     display: flex;
     width: 100%;
+    flex-direction: column;
 }
 h3 {
     margin: 15px;

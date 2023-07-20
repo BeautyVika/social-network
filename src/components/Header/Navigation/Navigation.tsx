@@ -11,22 +11,22 @@ const Navigation = () => {
         <nav className={s.navContainer}>
             <div className={s.item}>
                 <NavLink className={(isActive) => isActive ? s.active : s.link} to='/profile'>
-                    <PersonIcon/> Profile
+                    <PersonIcon /> Profile
                 </NavLink>
             </div>
             <div className={s.item}>
                 <NavLink className={(isActive) => isActive ? s.active : s.link} to='/dialogs'>
-                    <MailOutlineIcon/> Messages
+                    <MailOutlineIcon /> Messages
                 </NavLink>
             </div>
             <div className={s.item}>
                 <NavLink className={(isActive) => isActive ? s.active : s.link} to='/users'>
-                    <GroupIcon/> Users
+                    <GroupIcon /> Users
                 </NavLink>
             </div>
             <div className={s.item}>
                 <NavLink className={(isActive) => isActive ? s.active : s.link} to='/chat'>
-                    <ChatIcon/> Chat
+                    <ChatIcon /> Chat
                 </NavLink>
             </div>
         </nav>

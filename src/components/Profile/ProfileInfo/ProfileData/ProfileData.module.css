@@ -19,7 +19,27 @@
     display: flex;
     justify-content: center;
 }
-.btnCancel {
+.btn{
+    border: 2px solid #CA9CE1;
+    height: 40px;
+    width: 40%;
+    border-radius: 3px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+.btnEdit{
+    background-color: #CA9CE1;
+    color: ghostwhite;
+    margin-right: 3px;
+}
+.btnEdit:hover{
+    background-color: #d1aae7;
+}
+.btnCancel{
     background-color: ghostwhite;
     color: #CA9CE1;
+}
+.btnCancel:hover{
+    background-color: white;
 }

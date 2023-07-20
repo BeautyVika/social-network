@@ -9,8 +9,8 @@ type ContactsPropsType = {
 const Contact: FC<ContactsPropsType> = ({link,title}) => {
     return (
         <div className={s.title}>
-            {title}:
-            <a href={link} className={s.link}>{link}</a>
+            <span>{title} - </span>
+            <span><a href={link} className={s.link}>{link}</a></span>
         </div>
     )
 }

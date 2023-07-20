@@ -42,7 +42,7 @@ const ProfileAvatar: FC<ProfileAvatarPropsType> = (
                             fontSize: '2.5rem',
                             position: 'absolute',
                             bottom: '-114px',
-                            right: '121px',
+                            right: '130px',
                             border: '1px solid #CA9CE1',
                         }}
                     >

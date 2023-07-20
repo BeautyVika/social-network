@@ -26,14 +26,14 @@ export type ProfileDataFormType = {
 
 const ProfileDataForm: FC<ProfileDataType & InjectedFormProps<ProfileDataFormType, ProfileDataType>> = (props) => {
     const contactModel = {
-        facebook: '',
-        website: '',
-        vk: '',
-        twitter: '',
-        instagram: '',
-        youtube: '',
-        github: '',
-        mainLink: '',
+        facebook: props.initialValues.facebook,
+        website: props.initialValues.website,
+        vk: props.initialValues.vk,
+        twitter: props.initialValues.twitter,
+        instagram: props.initialValues.instagram,
+        youtube: props.initialValues.youtube,
+        github: props.initialValues.github,
+        mainLink: props.initialValues.mainLink,
     }
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
@@ -60,16 +60,17 @@ const ProfileDataForm: FC<ProfileDataType & InjectedFormProps<ProfileDataFormTyp
                    validate={[required]}
                    placeholder='Skills'/>
 
-            {Object.keys(contactModel).map(key => <Field placeholder={key}
-                                                         key={key}
-                                                         type='text'
-                                                         name={key} validate={[required]}
-                                                         component={Textarea}
+            {Object.keys(contactModel)
+                .map(key => <Field placeholder={key}
+                                   key={key}
+                                   type='text'
+                                   name={key}
+                                   component={Textarea}
             />)}
 
             <div className={s.btnGroup}>
-                <button>Send</button>
-                <button className={s.btnCancel} onClick={() => props.setEditMode(false)}>Cancel</button>
+                <button className={`${s.btn} ${s.btnEdit}`}>Save</button>
+                <button className={`${s.btn} ${s.btnCancel}`} onClick={() => props.setEditMode(false)}>Cancel</button>
             </div>
         </form>
     )

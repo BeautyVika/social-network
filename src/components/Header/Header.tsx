@@ -31,7 +31,7 @@ const Header = (props: HeaderPropsType) => {
                         ? <div>
                             <span className={s.name}>{props.login}</span>
                             <IconButton onClick={logOutHandler}>
-                                <ExitToAppIcon sx={{color: 'ghostwhite'}}/>
+                                <ExitToAppIcon className={s.icon}/>
                             </IconButton>
                         </div>
                         : <NavLink className={(isActive) => isActive ? s.active : s.link} to={'/login'}>Login</NavLink>}

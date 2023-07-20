@@ -13,12 +13,15 @@ export type MyPostFormType = {
 const MyPosts = memo((props: MyPostsPropsType) => {
 
     let postsElement = props.profilePage.posts.map(p =>
-        <MyPost avatar={props.profilePage.profile.photos.large}
-                key={p.id}
-                id={p.id}
-                addLikes={props.addLikes}
-                message={p.message}
-                likesCount={p.likesCount}/>)
+        <Paper elevation={3} component={"div"} sx={{width: '100%', marginTop: '10px'}}>
+            <MyPost avatar={props.profilePage.profile.photos.large}
+                    name={props.profilePage.profile.fullName}
+                    key={p.id}
+                    id={p.id}
+                    addLikes={props.addLikes}
+                    message={p.message}
+                    likesCount={p.likesCount}/>
+        </Paper>)
 
     let onAddPost = (values: MyPostFormType) => {
         props.addPost(values.newPostText)
@@ -30,11 +33,15 @@ const MyPosts = memo((props: MyPostsPropsType) => {
                 <h3>My posts</h3>
 
                 <AddNewPostFormRedux onSubmit={onAddPost}/>
+            </Paper>
+
 
                 <div className={s.posts}>
                     {postsElement}
                 </div>
-            </Paper>
+
+
+
         </div>
     )
 })

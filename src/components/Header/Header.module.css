@@ -29,6 +29,9 @@
     font-size: 20px;
     text-decoration: none;
 }
+.loginBlock a:hover{
+    color: #F2BEFC;
+}
 .link{
     display: flex;
     flex-direction: column;
@@ -50,4 +53,9 @@
     text-decoration: none;
     color: #83c5be;
 }
-
+.icon{
+    color: ghostwhite;
+}
+.icon:hover{
+    color: #F2BEFC;
+}

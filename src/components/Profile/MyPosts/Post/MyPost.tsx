@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton"
 
 type MyPostPropsType = {
     id: string
+    name: string
     message: string
     likesCount: number
     avatar: string
@@ -21,8 +22,12 @@ const MyPost = (props: MyPostPropsType) => {
     return (
         <div className={s.itemContainer}>
 
-            <img src={props.avatar || defaultImg} alt='avatar' className={s.itemPhoto}/>
-            {props.message}
+            <div className={s.imgContainer}>
+                <img src={props.avatar || defaultImg} alt='avatar' className={s.itemPhoto}/>
+                <span className={s.name}>{props.name}</span>
+            </div>
+
+            <p>{props.message}</p>
 
             <div className={s.likeContainer}>
                 <IconButton onClick={addLikesHandler} size={'small'}>
