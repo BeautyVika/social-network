@@ -35,6 +35,7 @@ const ProfileDataForm: FC<ProfileDataType & InjectedFormProps<ProfileDataFormTyp
         github: props.initialValues.github,
         mainLink: props.initialValues.mainLink,
     }
+
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
             {props.error && <div className={s.error}> {props.error} </div>}
@@ -51,7 +52,6 @@ const ProfileDataForm: FC<ProfileDataType & InjectedFormProps<ProfileDataFormTyp
             <Field component={CheckBox}
                    name='lookingForAJob'
                    type='checkbox'
-                   validate={[required]}
                    label='Looking for a job'/>
             <span>Looking for a job</span>
             <Field component={Textarea}
@@ -60,6 +60,7 @@ const ProfileDataForm: FC<ProfileDataType & InjectedFormProps<ProfileDataFormTyp
                    validate={[required]}
                    placeholder='Skills'/>
 
+            <span>Contacts:</span>
             {Object.keys(contactModel)
                 .map(key => <Field placeholder={key}
                                    key={key}

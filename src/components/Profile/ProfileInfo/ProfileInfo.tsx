@@ -57,7 +57,7 @@ const ProfileInfo: FC<ProfileInfoProps> = ({profile,
     }
     return (
         <div className={s.descriptionBlock}>
-                <Paper elevation={3} component={"div"} sx={{width: '100%', display: 'flex', flexDirection: 'column'}}>
+                <Paper elevation={3} component={"div"} sx={{width: '100%', display: 'flex',  flexDirection: 'column'}}>
                     <ProfileAvatar avatar={profile?.photos.large}
                                    changePhotoTC={changePhotoTC}
                                    isOwner={isOwner}

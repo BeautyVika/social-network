@@ -3,3 +3,6 @@
     position: relative;
     align-items: flex-end;
 }
+.icon:hover{
+    color: #CA9CE1
+}

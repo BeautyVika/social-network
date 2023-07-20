@@ -12,7 +12,7 @@ const ProfileData: FC<ProfileDataPropsType> = ({profile}) => {
     return (
         <div className={s.profileData}>
             <span>About me:{profile.aboutMe}</span>
-            <span>Looking for a job:{profile.lookingForAJob ? '✅' : '❎'}</span>
+            <span>Looking for a job:{profile.lookingForAJob ? '🙋' : '🙅'}</span>
 
             {profile.lookingForAJob && <span>
                 My professional skills:{profile.lookingForAJobDescription}</span>}

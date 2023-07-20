@@ -46,7 +46,7 @@ const ProfileAvatar: FC<ProfileAvatarPropsType> = (
                             border: '1px solid #CA9CE1',
                         }}
                     >
-                        <CloudUploadIcon />
+                        <CloudUploadIcon className={s.icon}/>
                     </IconButton>
                 </label>
             )}

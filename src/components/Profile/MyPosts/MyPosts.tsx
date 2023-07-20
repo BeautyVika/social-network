@@ -13,10 +13,9 @@ export type MyPostFormType = {
 const MyPosts = memo((props: MyPostsPropsType) => {
 
     let postsElement = props.profilePage.posts.map(p =>
-        <Paper elevation={3} component={"div"} sx={{width: '100%', marginTop: '10px'}}>
+        <Paper key={p.id} elevation={3} component={"div"} sx={{width: '100%', marginTop: '10px'}}>
             <MyPost avatar={props.profilePage.profile.photos.large}
                     name={props.profilePage.profile.fullName}
-                    key={p.id}
                     id={p.id}
                     addLikes={props.addLikes}
                     message={p.message}
