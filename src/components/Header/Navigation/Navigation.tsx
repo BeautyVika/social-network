@@ -24,11 +24,11 @@ const Navigation = () => {
                     <GroupIcon /> Users
                 </NavLink>
             </div>
-            <div className={s.item}>
-                <NavLink className={(isActive) => isActive ? s.active : s.link} to='/chat'>
-                    <ChatIcon /> Chat
-                </NavLink>
-            </div>
+            {/*<div className={s.item}>*/}
+            {/*    <NavLink className={(isActive) => isActive ? s.active : s.link} to='/chat'>*/}
+            {/*        <ChatIcon /> Chat*/}
+            {/*    </NavLink>*/}
+            {/*</div>*/}
         </nav>
     )
 }
