@@ -32,3 +32,10 @@ The following libraries are installed in this project:
 
 <hr>
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Реализовано:
+- авторизация в приложении
+- редактирование профиля
+- переход по страницам пользователей
+- подписка и отписка от пользователей
+- добавление постов
